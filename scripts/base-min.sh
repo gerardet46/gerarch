@@ -13,8 +13,11 @@ fi
 
 # xinit
 cp pkgs/base-min/xinitrc "$HOME/.xinitrc"
+chmod +x "$HOME/.xinitrc"
 
 ## DASH
 sudo ln -sf /usr/bin/dash /sbin/sh
 # prevent to use bash after updates
 sudo cp -v pkgs/base-min/dash-link.hook /usr/share/libalpm/hooks/
+
+$BASE_MIN="true"

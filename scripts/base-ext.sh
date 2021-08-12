@@ -1,7 +1,7 @@
 #!/usr/bin/env sh
 
 # base-min
-. scripts/base-min.sh
+[ -z "$BASE_MIN" ] &&. scripts/base-min.sh
 
 ## XORG, DESKTOP, FEH
 $PAC_INS xcompmgr xorg-xprop xorg-xinit xorg-xrandr xorg-xbacklight feh
