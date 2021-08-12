@@ -25,7 +25,7 @@ scs_add() {
 
 ####################################
 
-# scs_add "base-min"        # dash, xorg, compositor, audio, ...
+scs_add "base-min"        # dash, xorg, compositor, audio, ...
 scs_add "base-ext"        # (for desktop) base-min with fonts, xdg themes, audio, backlight ... (all useful desktop staff)
 scs_add "dunst"           # for notifications
 scs_add "st"              # (BE, SR) the best terminal
