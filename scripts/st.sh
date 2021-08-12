@@ -1,6 +1,8 @@
 #!/usr/bin/env sh
 
-git clone "$GER_GITHUB/st.git" "st"
-cd st
-sudo make clean install
-cd ..
+if [ -z "$(which st)" ]; then
+    git clone "$GER_GITHUB/st.git" "build/st"
+    cd build/st
+    sudo make clean install
+    cd ../..
+fi

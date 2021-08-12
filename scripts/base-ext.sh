@@ -22,6 +22,11 @@ fi
 
 # xcompmgr
 printf "Section \"Extensions\"\n\tOption \"Composite\" \"true\"\nEndSection" | sudo tee -a /etc/X11/xorg.conf 
+echo "xcompmgr -c &" >> "$HOME/.xinitrc"
+
+# feh
+cp wallpaper.jpg "$CONFIG_DIR/wallpaper"
+echo "feh --bg-fill \"$CONFIG_DIR/wallpaper\" &" >> "$HOME/.xinitrc"
 
 ## AUDIO
 $PAC_INS pulseaudio pulseaudio-alsa

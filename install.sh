@@ -6,6 +6,8 @@ AUR_INS="$AUR_HELPER --noconfirm --needed -S"
 PAC_INS="sudo pacman --noconfirm --needed -S"
 INIT_SYS="openrc" # openrc or systemd
 
+CONFIG_DIR="$HOME/.config"
+
 GER_GITHUB="https://github.com/gerardet46/"
 scs="" # do not touch this
 
@@ -43,14 +45,17 @@ scs_add "latex"           # math staff
 scs_add "php"             # web-dev staff
 scs_add "spotify"         # spotify with useful `sp` script
 
+# make build directory
+[ -d "build/" ] || mkdir build
+
 # install
 echo "$scs" | while read _script
 do
     _file="scripts/$_script.sh"
     if [ -f "$_file" ]; then
-	echo "#### Instal·lant $_script ####"
+	echo "#### Installing $_script ####"
 	. "$_file"
     else
-	echo "No s'ha trobat $_script"
+	echo "Not found: $_script"
     fi
 done

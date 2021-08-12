@@ -11,6 +11,9 @@ if [ -z "$(which "$AUR_HELPER")"] ; then
     cd ..
 fi
 
+# xinit
+cp pkgs/base-min/xinitrc "$HOME/.xinitrc"
+
 ## DASH
 sudo ln -sf /usr/bin/dash /sbin/sh
 # prevent to use bash after updates
