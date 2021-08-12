@@ -1,0 +1,12 @@
+set default-bg "#11161b"
+set default-fg "#f2f2f8"
+
+set recolor-lightcolor "#21262b"
+set recolor-darkcolor "#f2f2f8"
+
+set recolor true
+
+map D toggle_page_mode
+map g goto top
+map i recolor
+map p print

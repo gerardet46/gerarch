@@ -28,6 +28,10 @@ echo "xcompmgr -c &" >> "$HOME/.xinitrc"
 cp wallpaper.jpg "$CONFIG_DIR/wallpaper"
 echo "feh --bg-fill \"$CONFIG_DIR/wallpaper\" &" >> "$HOME/.xinitrc"
 
+## MOUSE for left and right-handed
+mkdir -p "$CONFIG_DIR/mouse"
+cp -r pkgs/base-ext/mouse* "$CONFIG_DIR/mouse"
+
 ## AUDIO
 $PAC_INS pulseaudio pulseaudio-alsa
 
