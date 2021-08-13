@@ -3,7 +3,7 @@
 pac_ins git fakeroot dash xorg xorg-xinit
 
 # install AUR helper
-if [ -z "$(which "$AUR_HELPER")" ]; then
+if ! which "$AUR_HELPER"; then
     git clone "$AUR_SRC" "build/$AUR_HELPER"
     sed 's/^.*MAKEFLAGS.*$/MAKEFLAGS\=\"\-j\$\(nprocs\)\"/' /etc/makepkg.conf | sudo tee /etc/makepkg.conf
     cd "build/$AUR_HELPER"

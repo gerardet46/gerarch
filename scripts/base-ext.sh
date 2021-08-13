@@ -22,9 +22,11 @@ else
 fi
 
 # redshift
-mkdir -p "$CONFIG_DIR/redshift"
-cp pkgs/base-ext/redshift.conf "$CONFIG_DIR/redshift"
-add_to_xinit "redshift &"
+if ! which redshift; then
+    mkdir -p "$CONFIG_DIR/redshift"
+    cp pkgs/base-ext/redshift.conf "$CONFIG_DIR/redshift"
+    add_to_xinit "redshift &"
+fi
 
 # feh
 cp wallpaper.jpg "$CONFIG_DIR/wallpaper"
@@ -35,9 +37,11 @@ mkdir -p "$CONFIG_DIR/mouse"
 cp -r pkgs/base-ext/mouse* "$CONFIG_DIR/mouse"
 
 ## AUDIO
-echo "Installing audio"
-pac_ins pulseaudio pulseaudio-alsa
-pulseaudio --start
+if ! which pulseaudio; then
+    echo "Installing audio"
+    pac_ins pulseaudio pulseaudio-alsa
+    pulseaudio --start
+fi
 
 ## FONTS
 echo "Installing fonts"

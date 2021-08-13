@@ -1,6 +1,8 @@
 #!/usr/bin/env sh
 
-pac_ins picom
+if ! which picom; then
+    pac_ins picom
 
-sudo cp pkgs/picom/picom.conf /etc/xdg/
-add_to_xinit "picom &"
+    sudo cp pkgs/picom/picom.conf /etc/xdg/
+    add_to_xinit "picom &"
+fi
