@@ -1,6 +1,6 @@
 #!/usr/bin/env sh
 
-$PAC_INS zsh
+pac_ins zsh
 
 # copy config
 mkdir -p "$CONFIG_DIR/zsh"

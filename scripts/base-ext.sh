@@ -4,11 +4,12 @@
 [ -z "$BASE_MIN" ] &&. scripts/base-min.sh
 
 ## XORG, DESKTOP, FEH
-$PAC_INS xcompmgr xorg-xprop xorg-xinit xorg-xrandr xorg-xbacklight feh
+echo "Installing xorg utilities, feh, backlight, ..."
+pac_ins xorg-xprop xorg-xinit xorg-xrandr xorg-xbacklight feh redshift
 
 # backlight
 if [ "$INIT_SYS" = "openrc" ]; then
-    $PAC_INS backlight-openrc
+    pac_ins backlight-openrc
 
     # make it POSIX-compliant
     script_path=/etc/init.d/backlight
@@ -20,23 +21,28 @@ else
     sudo systemctl enable backlight
 fi
 
-# xcompmgr
-printf "Section \"Extensions\"\n\tOption \"Composite\" \"true\"\nEndSection" | sudo tee -a /etc/X11/xorg.conf 
-echo "xcompmgr -c &" >> "$HOME/.xinitrc"
+# redshift
+mkdir -p "$CONFIG_DIR/redshift"
+cp pkgs/base-ext/redshift.conf "$CONFIG_DIR/redshift"
+add_to_xinit "redshift &"
 
 # feh
 cp wallpaper.jpg "$CONFIG_DIR/wallpaper"
-echo "feh --bg-fill \"$CONFIG_DIR/wallpaper\" &" >> "$HOME/.xinitrc"
+add_to_xinit "feh --bg-fill \"$CONFIG_DIR/wallpaper\" &"
 
 ## MOUSE for left and right-handed
 mkdir -p "$CONFIG_DIR/mouse"
 cp -r pkgs/base-ext/mouse* "$CONFIG_DIR/mouse"
 
 ## AUDIO
-$PAC_INS pulseaudio pulseaudio-alsa
+echo "Installing audio"
+pac_ins pulseaudio pulseaudio-alsa
+pulseaudio --start
 
 ## FONTS
-$PAC_INS noto-fonts-emoji ttf-font-awesome ttf-ubuntu-font-family
+echo "Installing fonts"
+pac_ins noto-fonts-emoji ttf-font-awesome ttf-ubuntu-font-family
 
 ## EMOJIS
-$AUR_INS libxft-bgra
+echo "Installing emojis"
+aur_ins libxft-bgra
