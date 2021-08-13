@@ -22,5 +22,10 @@ alias apache-quit='sudo pkill mysqld && sudo rc-service httpd stop'
 export PS1="(BASH) \[\e[32m\]\u@\h:\[\e[m\]\[\e[34m\]\W\[\e[m\] \$ "
 export EDITOR="nvim"
 
+# startx
+if [ $("tty") = "/dev/tty1" ] ; then
+    pgrep i3 || pgrep dwm || pgrep xmonad || startx ~/.xinitrc
+fi
+
 HISTSIZE=20000
 HISTFILESIZE=20000

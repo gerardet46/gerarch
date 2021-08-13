@@ -11,7 +11,7 @@ GER_GITHUB="https://github.com/gerardet46/"
 
 aur_ins() { "$AUR_HELPER" --noconfirm --needed -S "$@"; }
 pac_ins() { sudo pacman --noconfirm --needed -S "$@"; }
-add_autostart() { printf "$1" >> "$CONFIG_DIR/xstart"; }
+add_autostart() { printf "\n$1" >> "$CONFIG_DIR/xstart"; }
 ger_msg() {
     printf "\n$1"
     printf "\n$1" >> install.log

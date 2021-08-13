@@ -11,7 +11,7 @@ if cat /etc/issue | grep -i "artix"; then
 fi
 
 sudo pacman -Syyu
-pac_ins git fakeroot dash xorg xorg-xinit man-db man-pages
+pac_ins git fakeroot dash xorg xorg-xinit man-db man-pages curl wget
 
 # install AUR helper
 if ! which "$AUR_HELPER"; then

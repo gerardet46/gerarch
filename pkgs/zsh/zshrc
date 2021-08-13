@@ -25,7 +25,7 @@ alias apache-quit='sudo pkill mysqld && sudo rc-service httpd stop'
 
 # startx
 if [ $("tty") = "/dev/tty1" ] ; then
-    startx ~/.xinitrc
+    pgrep i3 || pgrep dwm || pgrep xmonad || startx ~/.xinitrc
 fi
 
 # nnn
