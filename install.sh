@@ -11,9 +11,6 @@ add_to_xinit() { printf "\n$1" >> "$HOME/.xinitrc"; }
 
 GER_GITHUB="https://github.com/gerardet46/"
 
-# check if nothing to do
-[ -z "$scs" ] && exit 1
-
 # make build directory
 [ -d "build/" ] || mkdir build
 
