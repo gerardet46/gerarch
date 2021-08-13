@@ -1,5 +1,7 @@
 #!/usr/bin/env sh
+
 _USER="$USER"
+[ -z "$EDITOR" ] && EDITOR="vi"
 AUR_HELPER="trizen"
 AUR_SRC="https://aur.archlinux.org/$AUR_HELPER.git"
 INIT_SYS="openrc" # openrc or systemd
@@ -37,32 +39,31 @@ ger_ins() {
 
 ####################################
 # BASE
-ger_ins "base-min"        # dash, xorg, compositor, audio, ...
-ger_ins "base-ext"        # (for desktop) base-min with fonts, xdg themes, audio, backlight ... (all useful desktop staff)
+ger_ins "base-min"        # aur, arch mirrors, fakeroot, dash, xorg, compositor, audio, xinitrc
+#ger_ins "base-ext"        # (for desktop )base-min + xdg-utils, backlight, feh (wallpaper), redshift, mouse, fonts, support for emoji
 
 # COMPOSITORS:
-ger_ins "xcompmgr"        # a basic compositor
-ger_ins "picom"           # a bloated compositor
+#ger_ins "xcompmgr"        # a basic compositor
+#ger_ins "picom"           # a bloated compositor
 
 # UTILITIES
-ger_ins "zsh"             # the best POSIX-compliant shell
-ger_ins "st"              # (BE, SR) the best terminal
-ger_ins "dmenu"           # (BE, SR) the menu
-ger_ins "dmenu-scripts"   # (BE) scripts for dmenu
-ger_ins "dunst"           # for notifications
-ger_ins "slock"           # (BE, SR) the locker
-ger_ins "tabbed"          # needed for nnn preview
-ger_ins "nnn"             # (SR) file manager (includes tabbed)
-ger_ins "emacs"           # the best OS
-ger_ins "nvim"            # the best text editor
-ger_ins "zathura"         # vim pdf-viewer
-ger_ins "sxiv"            # (SR) the image viewer
+#ger_ins "zsh"             # the best POSIX-compliant shell
+#ger_ins "st"              # (BE, SR) the best terminal
+#ger_ins "dmenu"           # (BE, SR) the menu
+#ger_ins "dmenu-scripts"   # (BE) scripts for dmenu
+#ger_ins "dunst"           # for notifications
+#ger_ins "slock"           # (BE, SR) the locker
+#ger_ins "tabbed"          # needed for nnn preview
+#ger_ins "nnn"             # (SR) file manager (includes tabbed)
+#ger_ins "emacs"           # the best OS
+#ger_ins "nvim"            # the best text editor
+#ger_ins "zathura"         # vim pdf-viewer
+#ger_ins "sxiv"            # (SR) the image viewer
 
 # BIG SOFTWARE
-ger_ins "latex"           # math staff
-ger_ins "php"             # apache, sass, sql, php, phpmyadmin
-ger_ins "spotify"         # spotify with useful `sp` script
+#ger_ins "latex"           # math staff
+#ger_ins "php"             # apache, sass, sql, php, phpmyadmin
+#ger_ins "spotify"         # spotify with useful `sp` script
 
 # WINDOW MANAGERS:
-ger_ins "i3"              # manual WM
-ger_ins "dwm"             # (SR) suckless WM
+#ger_ins "i3"              # manual WM

@@ -1,5 +1,16 @@
 #!/usr/bin/env sh
 
+# check if it's in artix linux and add support for pacman
+if cat /etc/issue | grep -i "artix"; then
+    if ! pacman -Q | grep artix-archlinux-support; then
+	pac_ins artix-archlinux-support
+	sudo pacman-key --populate archlinux
+	cat pkgs/base-min/pacman.conf | sudo tee -a /etc/pacman.conf
+	$EDITOR /etc/pacman.d/mirrorlist-arch
+	sudo pacman -Syyu
+    fi
+fi
+
 pac_ins git fakeroot dash xorg xorg-xinit
 
 # install AUR helper
@@ -12,6 +23,10 @@ if ! which "$AUR_HELPER"; then
 
     $AUR_HELPER -Syyu
 fi
+
+# bash
+cp pkgs/base-min/bashrc "$HOME/.bashrc"
+source "$HOME/.bashrc"
 
 # xinit
 cp pkgs/base-min/xinitrc "$HOME/.xinitrc"

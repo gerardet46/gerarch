@@ -1,0 +1,26 @@
+#
+# ~/.bashrc
+#
+
+# If not running interactively, don't do anything
+[[ $- != *i* ]] && return
+
+alias ls='ls --color=auto'
+alias grep='grep --color=auto'
+alias pac='sudo pacman'
+#alias apache='sudo systemctl start httpd && sudo systemctl start mysqld'
+
+### ARTIX ALIAS
+alias poweroff='sudo poweroff'
+alias reboot='sudo reboot'
+alias apache='sudo rc-service httpd start && sudo mysqld --user=root &> /dev/null &'
+alias apache-quit='sudo pkill mysqld && sudo rc-service httpd stop'
+
+#alias i3lock='i3lock --color "#184454"'
+
+#PS1='[\u@\h \W]\$ '
+export PS1="(BASH) \[\e[32m\]\u@\h:\[\e[m\]\[\e[34m\]\W\[\e[m\] \$ "
+export EDITOR="nvim"
+
+HISTSIZE=20000
+HISTFILESIZE=20000
