@@ -18,14 +18,14 @@ cp pkgs/base-min/xinitrc "$HOME/.xinitrc"
 chmod +x "$HOME/.xinitrc"
 if [ "$INIT_SYS" = "openrc" ]; then
     rc_path=/etc/conf.d/agetty.tty1
-    sed 's/options.*$/options\=\"\-n \-o $USER\"/' $rc_path | sudo tee $rc_path
+    sed 's/^agetty\_options.*$/options\=\"\-n \-o $USER\"/' $rc_path | sudo tee $rc_path
     printf '\n#agetty_options="-J -n -a $USER"' | sudo tee -a $rc_path
-    echo "Go to '$rc_path' to setup autologin or login options"
+    ger_msg "Go to '$rc_path' to setup autologin or login options"
 else
     sd_path=/etc/systed/system/getty.target.wants/getty@tt1.service
     sed 's/ExecStart.*$/ExecStart\=\-\/sbin\/agetty \-n \-o $USER \%I \$TERM/' $sd_path | sudo tee $sd_path
     printf '\n#ExecStart=-/sbin/agetty -J -n -a $USER %I \$TERM' | sudo tee -a $sd_path
-    echo "Go to '$sd_path' to setup autologin or login options"
+    ger_msg "Go to '$sd_path' to setup autologin or login options"
 fi
 
 ## DASH

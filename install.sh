@@ -5,9 +5,13 @@ AUR_SRC="https://aur.archlinux.org/$AUR_HELPER.git"
 INIT_SYS="openrc" # openrc or systemd
 CONFIG_DIR="$HOME/.config"
 
-aur_ins() { "$AUR_HELPER" --noconfirm --needed -S "$1"; }
-pac_ins() { sudo pacman --noconfirm --needed -S "$1"; }
+aur_ins() { "$AUR_HELPER" --noconfirm --needed -S "$@"; }
+pac_ins() { sudo pacman --noconfirm --needed -S "$@"; }
 add_to_xinit() { printf "\n$1" >> "$HOME/.xinitrc"; }
+ger_msg() {
+    echo "\n$1"
+    echo "\n$1" >> install.log
+}
 
 GER_GITHUB="https://github.com/gerardet46/"
 
