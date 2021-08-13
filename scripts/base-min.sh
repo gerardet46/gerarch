@@ -6,12 +6,12 @@ if cat /etc/issue | grep -i "artix"; then
 	pac_ins artix-archlinux-support
 	sudo pacman-key --populate archlinux
 	cat pkgs/base-min/pacman.conf | sudo tee -a /etc/pacman.conf
-	$EDITOR /etc/pacman.d/mirrorlist-arch
+	sudo $EDITOR /etc/pacman.d/mirrorlist-arch
 	sudo pacman -Syyu
     fi
 fi
 
-pac_ins git fakeroot dash xorg xorg-xinit
+pac_ins git fakeroot dash xorg xorg-xinit man-db man-pages
 
 # install AUR helper
 if ! which "$AUR_HELPER"; then
@@ -33,7 +33,7 @@ cp pkgs/base-min/xinitrc "$HOME/.xinitrc"
 chmod +x "$HOME/.xinitrc"
 if [ "$INIT_SYS" = "openrc" ]; then
     rc_path=/etc/conf.d/agetty.tty1
-    sed "s/^agetty\_options.*$/options\\=\\\"\\-n \\-o $_USER\\\"/" $rc_path | sudo tee $rc_path
+    sed "s/^agetty\\_options.*$/agetty\\_options\\=\\\"\\-n \\-o $_USER\\\"/" $rc_path | sudo tee $rc_path
     printf "\n#agetty_options=\"-J -n -a $USER\"" | sudo tee -a $rc_path
     ger_msg "Go to '$rc_path' to setup autologin or login options"
 else

@@ -11,8 +11,8 @@ aur_ins() { "$AUR_HELPER" --noconfirm --needed -S "$@"; }
 pac_ins() { sudo pacman --noconfirm --needed -S "$@"; }
 add_to_xinit() { printf "\n$1" >> "$HOME/.xinitrc"; }
 ger_msg() {
-    echo "\n$1"
-    echo "\n$1" >> install.log
+    printf "\n$1"
+    printf "\n$1" >> install.log
 }
 
 GER_GITHUB="https://github.com/gerardet46/"
