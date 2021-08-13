@@ -1,11 +1,11 @@
 #!/usr/bin/env sh
 
 # base-min
-[ -z "$BASE_MIN" ] &&. scripts/base-min.sh
+[ -z "$BASE_MIN" ] && . scripts/base-min.sh
 
 ## XORG, DESKTOP, FEH
 echo "Installing xorg utilities, feh, backlight, redshift"
-pac_ins xorg-xbacklight xdg-utils feh redshift
+pac_ins xorg-xbacklight xdg-utils feh
 
 # backlight
 if [ "$INIT_SYS" = "openrc" ]; then
@@ -23,8 +23,10 @@ fi
 
 # redshift
 if ! which redshift; then
+    pac_ins redshift
     mkdir -p "$CONFIG_DIR/redshift"
     cp pkgs/base-ext/redshift.conf "$CONFIG_DIR/redshift"
+    $EDITOR "$CONFIG_DIR/redshift/redshift.conf"
     add_to_xinit "redshift &"
 fi
 
@@ -49,6 +51,7 @@ pac_ins noto-fonts-emoji ttf-font-awesome ttf-ubuntu-font-family
 
 ## EMOJIS
 echo "Installing emojis"
+sudo pacman -Rsc libxft
 aur_ins libxft-bgra
 
 BASE_EXT="true"

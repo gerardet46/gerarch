@@ -7,15 +7,15 @@ AUR_SRC="https://aur.archlinux.org/$AUR_HELPER.git"
 INIT_SYS="openrc" # openrc or systemd
 CONFIG_DIR="$HOME/.config"
 
+GER_GITHUB="https://github.com/gerardet46/"
+
 aur_ins() { "$AUR_HELPER" --noconfirm --needed -S "$@"; }
 pac_ins() { sudo pacman --noconfirm --needed -S "$@"; }
-add_to_xinit() { printf "\n$1" >> "$HOME/.xinitrc"; }
+add_to_xinit() { printf "$1" >> "$HOME/.xinitrc"; }
 ger_msg() {
     printf "\n$1"
     printf "\n$1" >> install.log
 }
-
-GER_GITHUB="https://github.com/gerardet46/"
 
 # make build directory
 [ -d "build/" ] || mkdir build
