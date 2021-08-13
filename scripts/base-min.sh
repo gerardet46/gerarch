@@ -37,9 +37,9 @@ if [ "$INIT_SYS" = "openrc" ]; then
     printf "\n#agetty_options=\"-J -n -a $USER\"" | sudo tee -a $rc_path
     ger_msg "Go to '$rc_path' to setup autologin or login options"
 else
-    sd_path=/etc/systemd/system/getty.target.wants/getty@tt1.service
+    sd_path=/etc/systemd/system/getty.target.wants/getty\@tty1.service
     sed "s/ExecStart.*$/ExecStart\\=\\-\\/sbin\\/agetty \\-n \\-o $_USER \\%I \\\$TERM/" $sd_path | sudo tee $sd_path
-    printf "\n#ExecStart=-/sbin/agetty -J -n -a $USER %I \$TERM" | sudo tee -a $sd_path
+    printf "\n#ExecStart=-/sbin/agetty -J -n -a $USER \%I \$TERM" | sudo tee -a $sd_path
     ger_msg "Go to '$sd_path' to setup autologin or login options"
 fi
 
