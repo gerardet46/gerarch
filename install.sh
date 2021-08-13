@@ -5,14 +5,27 @@ AUR_SRC="https://aur.archlinux.org/$AUR_HELPER.git"
 INIT_SYS="openrc" # openrc or systemd
 CONFIG_DIR="$HOME/.config"
 
-aur_ins() { "$AUR_HELPER" --noconfirm --needed -S "$1" >/dev/null 2>&1; }
-pac_ins() { sudo pacman --noconfirm --needed -S "$1" >/dev/null 2>&1; }
+aur_ins() { "$AUR_HELPER" --noconfirm --needed -S "$1"; }
+pac_ins() { sudo pacman --noconfirm --needed -S "$1"; }
 add_to_xinit() { printf "\n$1" >> "$HOME/.xinitrc"; }
 
 GER_GITHUB="https://github.com/gerardet46/"
 
-scs="" # do not touch this
-scs_add() { [ -z "$scs" ] && scs="$1" || scs="$scs\n$1"; }
+# check if nothing to do
+[ -z "$scs" ] && exit 1
+
+# make build directory
+[ -d "build/" ] || mkdir build
+
+ger_ins() {
+    _file="scripts/$1.sh"
+    if [ -f "$_file" ]; then
+	echo "#### Installing $1 ####"
+	. "$_file"
+    else
+	echo "Not found: $1"
+    fi
+}
 
 ###################################
 # SELECT PROGRAMS HERE
@@ -23,51 +36,32 @@ scs_add() { [ -z "$scs" ] && scs="$1" || scs="$scs\n$1"; }
 
 ####################################
 # BASE
-scs_add "base-min"        # dash, xorg, compositor, audio, ...
-scs_add "base-ext"        # (for desktop) base-min with fonts, xdg themes, audio, backlight ... (all useful desktop staff)
+ger_ins "base-min"        # dash, xorg, compositor, audio, ...
+ger_ins "base-ext"        # (for desktop) base-min with fonts, xdg themes, audio, backlight ... (all useful desktop staff)
 
 # COMPOSITORS:
-scs_add "xcompmgr"        # a basic compositor
-scs_add "picom"           # a bloated compositor
+ger_ins "xcompmgr"        # a basic compositor
+ger_ins "picom"           # a bloated compositor
 
 # UTILITIES
-scs_add "zsh"             # the best POSIX-compliant shell
-scs_add "st"              # (BE, SR) the best terminal
-scs_add "dmenu"           # (BE, SR) the menu
-scs_add "dmenu-scripts"   # (BE) scripts for dmenu
-scs_add "dunst"           # for notifications
-scs_add "slock"           # (BE, SR) the locker
-scs_add "tabbed"          # needed for nnn preview
-scs_add "nnn"             # (SR) file manager (includes tabbed)
-scs_add "emacs"           # the best OS
-scs_add "nvim"            # the best text editor
-scs_add "zathura"         # vim pdf-viewer
-scs_add "sxiv"            # (SR) the image viewer
+ger_ins "zsh"             # the best POSIX-compliant shell
+ger_ins "st"              # (BE, SR) the best terminal
+ger_ins "dmenu"           # (BE, SR) the menu
+ger_ins "dmenu-scripts"   # (BE) scripts for dmenu
+ger_ins "dunst"           # for notifications
+ger_ins "slock"           # (BE, SR) the locker
+ger_ins "tabbed"          # needed for nnn preview
+ger_ins "nnn"             # (SR) file manager (includes tabbed)
+ger_ins "emacs"           # the best OS
+ger_ins "nvim"            # the best text editor
+ger_ins "zathura"         # vim pdf-viewer
+ger_ins "sxiv"            # (SR) the image viewer
 
 # BIG SOFTWARE
-scs_add "latex"           # math staff
-scs_add "php"             # apache, sass, sql, php, phpmyadmin
-scs_add "spotify"         # spotify with useful `sp` script
+ger_ins "latex"           # math staff
+ger_ins "php"             # apache, sass, sql, php, phpmyadmin
+ger_ins "spotify"         # spotify with useful `sp` script
 
 # WINDOW MANAGERS:
-scs_add "i3"              # manual WM
-scs_add "dwm"             # (SR) suckless WM
-####################################
-
-# check if nothing to do
-[ -z "$scs" ] && exit 1
-
-# make build directory
-[ -d "build/" ] || mkdir build
-
-# install
-echo "$scs" | while read _script
-do
-    _file="scripts/$_script.sh"
-    if [ -f "$_file" ]; then
-	echo "#### Installing $_script ####"
-	. "$_file"
-    else
-	echo "Not found: $_script"
-    fi
-done
+ger_ins "i3"              # manual WM
+ger_ins "dwm"             # (SR) suckless WM
