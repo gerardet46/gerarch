@@ -1,7 +1,7 @@
 #!/usr/bin/env sh
 
 _USER="$USER"
-[ -z "$EDITOR" ] && EDITOR="vi"
+export EDITOR="vi"
 AUR_HELPER="trizen"
 AUR_SRC="https://aur.archlinux.org/$AUR_HELPER.git"
 INIT_SYS="openrc" # openrc or systemd
@@ -11,7 +11,7 @@ GER_GITHUB="https://github.com/gerardet46/"
 
 aur_ins() { "$AUR_HELPER" --noconfirm --needed -S "$@"; }
 pac_ins() { sudo pacman --noconfirm --needed -S "$@"; }
-add_to_xinit() { printf "$1" >> "$HOME/.xinitrc"; }
+add_autostart() { printf "$1" >> "$CONFIG_DIR/xstart"; }
 ger_msg() {
     printf "\n$1"
     printf "\n$1" >> install.log
@@ -19,6 +19,7 @@ ger_msg() {
 
 # make build directory
 [ -d "build/" ] || mkdir build
+[ -d "$CONFIG_DIR/" ] || mkdir "$CONFIG_DIR"
 
 ger_ins() {
     _file="scripts/$1.sh"

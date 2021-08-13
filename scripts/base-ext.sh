@@ -27,12 +27,12 @@ if ! which redshift; then
     mkdir -p "$CONFIG_DIR/redshift"
     cp pkgs/base-ext/redshift.conf "$CONFIG_DIR/redshift"
     $EDITOR "$CONFIG_DIR/redshift/redshift.conf"
-    add_to_xinit "redshift &"
+    add_autostart "redshift &"
 fi
 
 # feh
 cp wallpaper.jpg "$CONFIG_DIR/wallpaper"
-add_to_xinit "feh --bg-fill \"$CONFIG_DIR/wallpaper\" &"
+add_autostart "feh --bg-fill \"$CONFIG_DIR/wallpaper\" &"
 
 ## MOUSE for left and right-handed
 mkdir -p "$CONFIG_DIR/mouse"

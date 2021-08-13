@@ -5,5 +5,5 @@ if ! which xcompmgr; then
 
     # xcompmgr
     printf "\nSection \"Extensions\"\n\tOption \"Composite\" \"true\"\nEndSection" | sudo tee -a /etc/X11/xorg.conf 
-    add_to_xinit "xcompmgr &"
+    add_autostart "xcompmgr &"
 fi

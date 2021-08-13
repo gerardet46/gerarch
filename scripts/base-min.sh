@@ -30,7 +30,9 @@ source "$HOME/.bashrc"
 
 # xinit
 cp pkgs/base-min/xinitrc "$HOME/.xinitrc"
-chmod +x "$HOME/.xinitrc"
+cp pkgs/base-min/xstart "$CONFIG_DIR/"
+chmod +x "$HOME/.xinitrc" "$CONFIG_DIR/xstart"
+
 if [ "$INIT_SYS" = "openrc" ]; then
     rc_path=/etc/conf.d/agetty.tty1
     sed "s/^agetty\\_options.*$/agetty\\_options\\=\\\"\\-n \\-o $_USER\\\"/" $rc_path | sudo tee $rc_path
