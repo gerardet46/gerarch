@@ -14,3 +14,6 @@ fi
 # autostart
 # Set in the file below the cmds to autostart
 [ -x "~/.config/xstart" ] && . "~/.config/xstart"
+
+# WM (the following line is necessary to choose the session in ger_ins)
+# exec

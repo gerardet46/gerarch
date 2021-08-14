@@ -54,7 +54,7 @@ for x in $PLUGINS; do
 
 	[ -d "$ruta" ] || git clone "https://github.com/olivierverdier/zsh-git-prompt" "$ruta"
 	if ! [ "$GIT_PROMPT_EXECUTABLE" != "haskell" -o -f "/usr/local/bin/stack" ]; then
-	    sudo pacman -S stack
+	    sudo pacman --noconfirm -S stack
 	    cd "$ruta"
 	    stack setup
 	    stack build
@@ -66,7 +66,7 @@ for x in $PLUGINS; do
 	RPROMPT='$(git_super_status)'
     else
 	# instal·lam si no ho està
-	[ -z "$(pacman -Q | grep "$x")" ] && $AUR_HELPER -S "$x"
+	[ -z "$(pacman -Q | grep "$x")" ] && $AUR_HELPER --noconfirm -S "$x"
 	# carregam
 	source "/usr/share/zsh/plugins/$x/$x.zsh" 2> /dev/null
     fi

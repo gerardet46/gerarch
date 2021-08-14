@@ -4,8 +4,13 @@
 [ -z "$BASE_MIN" ] && . scripts/base-min.sh
 
 ## XORG, DESKTOP, FEH
-echo "Installing xorg utilities, feh, backlight, redshift"
-pac_ins xorg-xbacklight xdg-utils feh
+echo "Installing xorg, utilities, feh, backlight, redshift"
+pac_ins xorg xorg-xinit xorg-xbacklight xdg-utils feh
+
+# xinit
+cp pkgs/base-ext/xinitrc "$HOME/.xinitrc"
+cp pkgs/base-ext/xstart "$CONFIG_DIR/"
+chmod +x "$HOME/.xinitrc" "$CONFIG_DIR/xstart"
 
 # backlight
 if [ "$INIT_SYS" = "openrc" ]; then
@@ -17,8 +22,6 @@ if [ "$INIT_SYS" = "openrc" ]; then
     sed 's/\]\]/\]/g' "$script_path" | sudo tee "$script_path"
 
     sudo rc-update add backlight
-else
-    sudo systemctl enable backlight
 fi
 
 # redshift

@@ -1,0 +1,4 @@
+#!/usr/bin/sh
+
+setxkbmap es
+xrandr -s 1920x1080

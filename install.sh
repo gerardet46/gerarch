@@ -4,11 +4,26 @@ _USER="$USER"
 export EDITOR="vi"
 AUR_HELPER="trizen"
 AUR_SRC="https://aur.archlinux.org/$AUR_HELPER.git"
-INIT_SYS="openrc" # openrc or systemd
 CONFIG_DIR="$HOME/.config"
+GER_GITHUB="https://github.com/gerardet46/" # link to my github repos
 
-GER_GITHUB="https://github.com/gerardet46/"
+# distro (manual with DISTRO="ditro name")
+(cat /etc/issue | grep -i "artix") && DISTRO="artix"
+(cat /etc/issue | grep -i "arch")  && DISTRO="arch"
 
+# PID 1 (manual with INIT_SYS="openrc or systemd") (if not defined it uses systemd)
+(ls -l /sbin/init | grep openrc)  && INIT_SYS="openrc"
+(ls -l /sbin/init | grep systemd) && INIT_SYS="systemd"
+
+# make build directory
+[ -d "build/" ] || mkdir build
+[ -d "$CONFIG_DIR/" ] || mkdir "$CONFIG_DIR"
+
+# NOTE: now edit pkgs_selection.sh to select the programs you want
+
+###################
+# FUNCTIONS (you don't need to touch this)
+###################
 aur_ins() { "$AUR_HELPER" --noconfirm --needed -S "$@"; }
 pac_ins() { sudo pacman --noconfirm --needed -S "$@"; }
 add_autostart() { printf "\n$1" >> "$CONFIG_DIR/xstart"; }
@@ -16,10 +31,6 @@ ger_msg() {
     printf "\n$1"
     printf "\n$1" >> install.log
 }
-
-# make build directory
-[ -d "build/" ] || mkdir build
-[ -d "$CONFIG_DIR/" ] || mkdir "$CONFIG_DIR"
 
 ger_ins() {
     _file="scripts/$1.sh"
@@ -31,40 +42,5 @@ ger_ins() {
     fi
 }
 
-###################################
-# SELECT PROGRAMS HERE
-
-# add/comment script name (without .sh) to be installed
-# comments starting with "BE" means that are included in `base-ext`
-# comments starting with "SR" means that are compiled from source
-
-####################################
-# BASE
-ger_ins "base-min"        # aur, arch mirrors, fakeroot, dash, xorg, compositor, audio, xinitrc
-#ger_ins "base-ext"        # (for desktop )base-min + xdg-utils, backlight, feh (wallpaper), redshift, mouse, fonts, support for emoji
-
-# COMPOSITORS:
-#ger_ins "xcompmgr"        # a basic compositor
-#ger_ins "picom"           # a bloated compositor
-
-# UTILITIES
-#ger_ins "zsh"             # the best POSIX-compliant shell
-#ger_ins "st"              # (BE, SR) the best terminal
-#ger_ins "dmenu"           # (BE, SR) the menu
-#ger_ins "dmenu-scripts"   # (BE) scripts for dmenu
-#ger_ins "dunst"           # for notifications
-#ger_ins "slock"           # (BE, SR) the locker
-#ger_ins "tabbed"          # needed for nnn preview
-#ger_ins "nnn"             # (SR) file manager (includes tabbed)
-#ger_ins "emacs"           # the best OS
-#ger_ins "nvim"            # the best text editor
-#ger_ins "zathura"         # vim pdf-viewer
-#ger_ins "sxiv"            # (SR) the image viewer
-
-# BIG SOFTWARE
-#ger_ins "latex"           # math staff
-#ger_ins "php"             # apache, sass, sql, php, phpmyadmin
-#ger_ins "spotify"         # spotify with useful `sp` script
-
-# WINDOW MANAGERS:
-#ger_ins "i3"              # manual WM
+# install programs in pkgs_selection.sh
+. pkgs_selection.sh
