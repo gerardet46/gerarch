@@ -8,16 +8,18 @@ CONFIG_DIR="$HOME/.config"
 GER_GITHUB="https://github.com/gerardet46/" # link to my github repos
 
 # distro (manual with DISTRO="ditro name")
-(cat /etc/issue | grep -i "artix") && DISTRO="artix"
-(cat /etc/issue | grep -i "arch")  && DISTRO="arch"
+(cat /etc/issue | grep -i "artix" > /dev/null) && DISTRO="artix"
+(cat /etc/issue | grep -i "arch" > /dev/null)  && DISTRO="arch"
 
 # PID 1 (manual with INIT_SYS="openrc or systemd") (if not defined it uses systemd)
-(ls -l /sbin/init | grep openrc)  && INIT_SYS="openrc"
-(ls -l /sbin/init | grep systemd) && INIT_SYS="systemd"
+(ls -l /sbin/init | grep openrc > /dev/null)  && INIT_SYS="openrc"
+(ls -l /sbin/init | grep systemd > /dev/null) && INIT_SYS="systemd"
 
-# make build directory
-[ -d "build/" ] || mkdir build
-[ -d "$CONFIG_DIR/" ] || mkdir "$CONFIG_DIR"
+# check if editor is installed
+if ! which "$EDITOR" > /dev/null; then
+    echo "Your selected editor is $EDITOR, but it's not installed"
+    exit 1
+fi
 
 # NOTE: now edit pkgs_selection.sh to select the programs you want
 
@@ -42,5 +44,26 @@ ger_ins() {
     fi
 }
 
+# check if all right before installing
+echo "DISTRO: $DISTRO"
+echo "PID 1: $INIT_SYS"
+echo "EDITOR: $EDITOR"
+echo "USER: $USER"
+echo "AUR HELPER: $AUR_HELPER (will be installed if it isn't)"
+echo "CONFIG DIR: $CONFIG_DIR"
+echo "Link to my GitHub repo: $GER_GITHUB"
+printf "\n"
+
+read -p "Proceed to install? [y/N] [s/N]: " yn
+
+case $yn in
+    Y|y|S|s) echo "Ready to install!!" ;;
+    *) exit 1 ;;
+esac
+
+# make build directory
+[ -d "build/" ] || mkdir build
+[ -d "$CONFIG_DIR/" ] || mkdir "$CONFIG_DIR"
+
 # install programs in pkgs_selection.sh
-. pkgs_selection.sh
+. ./pkgs_selection.sh
