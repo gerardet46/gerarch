@@ -7,4 +7,15 @@ if ! which sxiv; then
     mkdir -p "$CONFIG_DIR/sxiv"
     cp -vr config/* "$CONFIG_DIR/sxiv/"
     cd ../..
+
+    # set default mime types
+    xdg-mime default sxiv.desktop "image/png"
+    xdg-mime default sxiv.desktop "image/jpg"
+    xdg-mime default sxiv.desktop "image/jpeg"
+
+    mimes="bmp gif jpeg jpg png tiff x-bmp x-portable-anymap x-portable-bitmap x-portable-graymap x-tga x-xpixmap"
+    echo "$mimes" | tr ' ' '\n' | while read item; do
+	echo "Mime image/$item"
+	xdg-mime default sxiv.desktop "item/$item"
+    done
 fi
