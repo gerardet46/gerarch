@@ -1,0 +1,103 @@
+#!/bin/bash
+
+dmenu_() {
+    dmenu -p "$1"
+}
+
+dmenu_lines() {
+    dmenu -p "$1" -l 20
+}
+
+# same as dmenu_run without executing
+dmenu_apps() {
+    dmenu_path | dmenu -i -p "$1" -fn "Cantarell-16" -nf '#ffb52a' -sb '#ffb52a' -sf '#222'
+}
+
+txt_continue="Continua"
+txt_create_folder="Crear Carpeta"
+txt_delete="Elimina"
+txt_explore="Explora"
+txt_actions="Accions"
+txt_enter_name="Introdueix un nom"
+txt_open="Obri"
+txt_open_with="Obri amb"
+
+target="$1"
+[ -z "$target" ] && target="$(realpath .)"
+prompt="$2"
+
+while true; do
+    p="$prompt"
+    [ -z "$p" ] && p="$target"
+
+    shown_prompt=${p/"$HOME"/"~"}
+
+    # sel="$(ls -1a "$target" |grep -v '^\.$' | dmenu_lines "$shown_prompt")"
+    sel="$(ls -1a "$target" | dmenu_lines "$shown_prompt")"
+    ec=$?
+    [ "$ec" -ne 0 ] && exit $ec
+
+    c="$(echo "$sel" |cut -b1)"
+    if [ "$c" = "/" ]; then
+	newt="$sel"
+    elif [ "$c" = "~" ]; then
+	newt="$HOME"
+    elif [ "$sel" = "." ]; then
+	# accions des directori
+	opt=$(echo -e "Continua\nCrear Carpeta\nCrear Fitxer\nElimina\nExplora" | dmenu_ "Accions")
+	carpeta="$(realpath "${target}/${sel}")"
+
+	case "$opt" in
+	    Continua) newt="$carpeta" ;;
+	    Explora)
+		xdg-open "$carpeta"
+		exit 0 ;;
+	    Elimina)
+		rm -rf "$carpeta"
+		exit 0 ;;
+	    "Crear Carpeta")
+		nom=$(echo "--cancelar" | dmenu_ "Introdueix un nom")
+		echo "$nom"
+
+		if [ "$nom" != "--cancelar" ]; then
+		    newt="$(realpath "${target}/${nom}")"
+		    mkdir "$newt"
+		fi
+		;;
+	    "Crear Fitxer")
+		nom=$(echo "--cancelar" | dmenu_ "Introdueix un nom")
+		echo "$nom"
+
+		if [ "$nom" != "--cancelar" ]; then
+		    touch "$(realpath "${target}/${nom}")"
+		fi
+		;;
+	esac
+    else
+	newt="$(realpath "${target}/${sel}")"
+    fi
+
+    if [ -e "$newt" ]; then
+	target="$newt"
+	if [ ! -d "$target" ]; then
+	    # echo "$target"
+	    opt=$(echo -e "Obri\nObri amb\nElimina" | dmenu_ "Accions")
+
+	    case "$opt" in
+		Obri)
+		    xdg-open "$target"
+		    exit 0
+		    ;;
+		"Obri amb")
+		    prg=$(dmenu_apps "Obri amb")
+		    $($prg "$target")
+		    exit 0
+		    ;;
+		Elimina)
+		    rm -rf "$target"
+		    target=$(echo "$target" | sed 's/\/[^\/]*$//')
+		    ;;
+	    esac
+	fi
+    fi
+done

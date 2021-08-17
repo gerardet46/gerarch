@@ -20,7 +20,7 @@ ger_ins "base-min"        # aur, arch mirrors, pacman-contrib, fakeroot, dash, b
 #ger_ins "zsh"             # the best POSIX-compliant shell
 #ger_ins "st"              # (BE, SR) the best terminal
 #ger_ins "dmenu"           # (BE, SR) the menu
-#ger_ins "dmenu-scripts"   # (BE) scripts for dmenu
+#ger_ins "scripts"         # (BE) scripts (installs dmenu if not installed)
 #ger_ins "dunst"           # for notifications
 #ger_ins "slock"           # (BE, SR) the locker
 #ger_ins "tabbed"          # needed for nnn preview

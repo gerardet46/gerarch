@@ -76,6 +76,7 @@ bindsym $mod+F1 exec ~/scripts/scripts.sh
 bindsym $mod+F2 exec dmenu_run
 bindsym $mod+F3 exec ~/scripts/emoji.sh
 bindsym $mod+F4 exec ~/scripts/dbrowse
+bindsym $mod+F10 exec ~/scripts/spotify.sh
 bindsym $mod+d exec i3-dmenu-desktop
 #bindsym $mod+shift+p exec rofi -theme scripts/material -font "Cantarell 12" -show window
 
