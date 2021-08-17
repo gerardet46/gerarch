@@ -56,6 +56,6 @@ pac_ins ttf-font-awesome ttf-ubuntu-font-family
 echo "Installing emojis"
 sudo pacman --noconfirm -Rsc libxft
 aur_ins libxft-bgra
-pac -S noto-fonts-emoji 
+pac_ins noto-fonts-emoji 
 
 BASE_EXT="true"
