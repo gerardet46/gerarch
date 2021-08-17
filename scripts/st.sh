@@ -3,6 +3,6 @@
 if ! which st; then
     git clone "$GER_GITHUB/st.git" "build/st"
     cd build/st
-    sudo make clean install
+    sudo make install clean
     cd ../..
 fi
