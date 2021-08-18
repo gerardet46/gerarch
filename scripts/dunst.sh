@@ -1,7 +1,7 @@
 #!/usr/bin/env sh
 
 if ! which dunst; then
-    pac_ins dunst
+    pac_ins dunst libnotify
     mkdir -p "$CONFIG_DIR/dunst"
     cp pkgs/dunst/dunstrc "$CONFIG_DIR/dunst/dunstrc"
 

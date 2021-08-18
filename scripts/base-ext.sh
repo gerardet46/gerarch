@@ -5,7 +5,7 @@
 
 ## XORG, DESKTOP, FEH
 echo "Installing xorg, utilities, feh, backlight, redshift"
-pac_ins xorg xorg-xinit xorg-xbacklight xdg-utils feh
+pac_ins xorg xorg-xinit xorg-xbacklight xdg-utils xclip xdotool feh
 
 # xinit
 cp pkgs/base-ext/xinitrc "$HOME/.xinitrc"
@@ -50,7 +50,7 @@ fi
 
 ## FONTS
 echo "Installing fonts"
-pac_ins ttf-font-awesome ttf-ubuntu-font-family
+pac_ins ttf-font-awesome ttf-hack ttf-ubuntu-font-family
 
 ## EMOJIS
 echo "Installing emojis"

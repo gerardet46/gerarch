@@ -5,7 +5,7 @@ if ! which nnn; then
     if ! which cpg; then
 	cd build
 	wget http://ftp.gnu.org/gnu/coreutils/coreutils-8.32.tar.xz
-	tar xvJf coreutils-8.32.tar.xz
+	tar xJf coreutils-8.32.tar.xz
 	cd coreutils-8.32/
 	wget https://raw.githubusercontent.com/jarun/advcpmv/master/advcpmv-0.8-8.32.patch
 	patch -p1 -i advcpmv-0.8-8.32.patch
