@@ -26,11 +26,13 @@ if ! which nnn; then
     # drag and drop and pmount
     aus_ins pmount dragon-drag-and-drop
 
+    # nnn
     git clone "$GER_GITHUB/nnn.git" "build/nnn"
     cd build/nnn
     make O_GISTATUS=1 O_NOMOUSE=1
     sudo make install install-desktop clean
     
+    # configs and mime
     [ -d "$CONFIG_DIR/nnn" ] && rm -rf "$CONFIG_DIR/nnn"
     cp -rv config/ "$CONFIG_DIR/nnn"
 
