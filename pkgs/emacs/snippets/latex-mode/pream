@@ -1,0 +1,31 @@
+# -*- mode: snippet -*-
+# name: pream
+# key: pream
+# --
+\documentclass[18pt]{article}
+
+\usepackage[a4paper, total={6.5in, 9.5in}]{geometry}
+\usepackage{graphicx}
+\usepackage{setspace}
+\usepackage[table,xcdraw]{xcolor}
+\usepackage{longtable}
+\usepackage{colortbl}
+\usepackage[makeroom]{cancel}
+\usepackage[utf8]{inputenc}
+\usepackage[catalan]{babel}
+\usepackage{tabularx}
+\usepackage{array}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{float}
+\usepackage{hyperref}
+\usepackage{moresize}
+\usepackage{xcolor}
+\usepackage{graphicx}
+\usepackage{gensymb}
+\usepackage[fontsize=11pt]{fontsize}
+\onehalfspacing
+
+\begin{document}
+$0
+\end{document}

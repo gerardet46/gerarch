@@ -11,7 +11,7 @@ if [ "$DISTRO" = "artix" ]; then
 fi
 
 sudo pacman --noconfirm -Syyu
-pac_ins git pacman-contrib fakeroot dash man-db man-pages curl wget
+pac_ins git base-devel pacman-contrib fakeroot dash man-db man-pages zip unzip curl wget
 
 # install AUR helper
 if ! which "$AUR_HELPER"; then
