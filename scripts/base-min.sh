@@ -3,14 +3,18 @@
 # check if it's in artix linux and add support for pacman
 if [ "$DISTRO" = "artix" ]; then
     if ! pacman -Q | grep artix-archlinux-support; then
+	sudo pacman --noconfirm -Syyu
 	pac_ins artix-archlinux-support
 	sudo pacman-key --populate archlinux
 	cat pkgs/base-min/pacman.conf | sudo tee -a /etc/pacman.conf
 	sudo $EDITOR /etc/pacman.d/mirrorlist-arch
+    else
+	sudo pacman --noconfirm -Syyu
     fi
+else
+    sudo pacman --noconfirm -Syyu
 fi
 
-sudo pacman --noconfirm -Syyu
 pac_ins git base-devel pacman-contrib fakeroot dash man-db man-pages zip unzip curl wget
 
 # install AUR helper
