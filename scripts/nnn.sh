@@ -24,7 +24,7 @@ if ! which nnn; then
     which tabbed > /dev/null || ger_ins tabbed
 
     # drag and drop and pmount
-    aus_ins pmount dragon-drag-and-drop
+    aur_ins pmount dragon-drag-and-drop
 
     # nnn
     git clone "$GER_GITHUB/nnn.git" "build/nnn"
