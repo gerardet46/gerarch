@@ -21,7 +21,8 @@ if ! which "$AUR_HELPER"; then
     sed 's/^.*MAKEFLAGS.*$/MAKEFLAGS\=\"\-j\$\(nproc\)\"/' /etc/makepkg.conf | sudo tee /etc/makepkg.conf
     cd "build/$AUR_HELPER"
     makepkg --noconfirm -si
-    cd ../..
+
+    cd "$DIR"
 
     $AUR_HELPER --noconfirm -Syyu
 fi

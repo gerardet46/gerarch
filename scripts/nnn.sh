@@ -17,8 +17,9 @@ if ! which nnn; then
 
 	# clean
 	rm -f coreutils-8.32.tar.xz
-	cd ../..
     fi
+
+    cd "$DIR"
 
     # tabbed
     which tabbed > /dev/null || ger_ins tabbed
@@ -37,5 +38,4 @@ if ! which nnn; then
     cp -rv config/ "$CONFIG_DIR/nnn"
 
     xdg-mime default nnn.desktop inode/directory
-    cd ../..
 fi

@@ -6,7 +6,6 @@ if ! which sxiv; then
     sudo make install clean
     mkdir -p "$CONFIG_DIR/sxiv"
     cp -vr config/* "$CONFIG_DIR/sxiv/"
-    cd ../..
 
     # set default mime types
     xdg-mime default sxiv.desktop "image/png"

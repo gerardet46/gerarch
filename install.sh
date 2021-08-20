@@ -6,6 +6,7 @@ AUR_HELPER="trizen"
 AUR_SRC="https://aur.archlinux.org/$AUR_HELPER.git"
 CONFIG_DIR="$HOME/.config"
 GER_GITHUB="https://github.com/gerardet46/" # link to my github repos
+DIR="$(pwd)"
 
 # distro (manual with DISTRO="ditro name")
 (cat /etc/issue | grep -i "artix" > /dev/null) && DISTRO="artix"
@@ -38,6 +39,7 @@ ger_ins() {
     _file="scripts/$1.sh"
     if [ -f "$_file" ]; then
 	echo "#### Installing $1 ####"
+	cd "$DIR" # return to default dir
 	. "$_file"
     else
 	echo "Not found: $1"
@@ -51,6 +53,7 @@ echo "EDITOR: $EDITOR"
 echo "USER: $USER"
 echo "AUR HELPER: $AUR_HELPER (will be installed if it isn't)"
 echo "CONFIG DIR: $CONFIG_DIR"
+echo "This directory: $DIR"
 echo "Link to my GitHub repo: $GER_GITHUB"
 printf "\n"
 

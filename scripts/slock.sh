@@ -4,7 +4,6 @@ if ! which slock ; then
     git clone "$GER_GITHUB/slock.git" "build/slock"
     cd build/slock
     sudo make install clean
-    cd ../..
 
     # intall xautolock
     pac_ins xautolock
