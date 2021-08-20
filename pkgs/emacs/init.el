@@ -38,7 +38,7 @@
  '(key-chord-mode t)
  '(objed-cursor-color "#ff6c6b")
  '(package-selected-packages
-   '(emojify markdown-mode pdf-tools company-auctex auctex yasnippet-snippets telega alert company-emoji visual-fill-column dashboard company-c-headers multiple-cursors which-key evil-anzu org-bullets atom-one-dark-theme magit scss-mode js2-mode all-the-icons-ivy-rich ivy-rich counsel ivy key-chord treemacs-projectile treemacs company-phpactor phpactor flycheck-phpstan flycheck company-php use-package php-mode emmet-mode yasnippet company-web web-mode hl-todo projectile-codesearch projectile doom-modeline general doom-themes evil))
+   '(emojify markdown-mode pdf-tools company-auctex auctex yasnippet-snippets alert company-emoji visual-fill-column dashboard company-c-headers multiple-cursors which-key evil-anzu org-bullets atom-one-dark-theme magit scss-mode js2-mode all-the-icons-ivy-rich ivy-rich counsel ivy key-chord treemacs-projectile treemacs company-phpactor phpactor flycheck-phpstan flycheck company-php use-package php-mode emmet-mode yasnippet company-web web-mode hl-todo projectile-codesearch projectile doom-modeline general doom-themes evil))
  '(pdf-view-midnight-colors (cons "#bbc2cf" "#282c34"))
  '(rustic-ansi-faces
    ["#282c34" "#ff6c6b" "#98be65" "#ECBE7B" "#51afef" "#c678dd" "#46D9FF" "#bbc2cf"])
@@ -660,9 +660,6 @@ Version 2017-03-12"
                         (agenda . 5)))
 
 
-;; telega
-;;(global-emojify-mode)
-
 ;;(global-set-key (kbd "C-c e") 'emojify-insert-emoji)
 
 (defun --set-emoji-font (frame)  
@@ -671,33 +668,12 @@ Version 2017-03-12"
       ;; For NS/Cocoa
       (set-fontset-font t 'symbol (font-spec :family "Apple Color Emoji") frame 'prepend)
     ;; For Linux
-    (set-fontset-font t 'symbol (font-spec :family "Symbola") frame 'prepend)))
+    (set-fontset-font t 'symbol (font-spec :family "Noto Color Emoji") frame 'prepend)))
 
-;; For when Emacs is started in GUI mode:
 (--set-emoji-font nil)
-;; Hook for when a frame is created with emacsclient
-;; see https://www.gnu.org/software/emacs/manual/html_node/elisp/Creating-Frames.html
 (add-hook 'after-make-frame-functions '--set-emoji-font)
 
-(setq telega-emoji-company-backend 'telega-company-emoji)
 (setq emojify-company-tooltips-p t)
-
-;;(require 'telega-dashboard)
-;;(add-to-list 'dashboard-items '(telega-chats . 5))
-;;(telega-alert-mode +1)
-
-(defun my-telega-chat-mode ()
-  (set (make-local-variable 'company-backends)
-       (append (list telega-emoji-company-backend
-                   'telega-company-username
-                   'telega-company-hashtag)
-             (when (telega-chat-bot-p telega-chatbuf--chat)
-               '(telega-company-botcmd))))
-  (company-mode 1)
-  (telega-notifications-mode +1))
-
-(add-hook 'telega-chat-mode-hook 'my-telega-chat-mode)
-
 
 ;; latex
 (require 'tex)

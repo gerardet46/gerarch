@@ -32,7 +32,6 @@ ger_ins "base-min"        # aur, arch mirrors, pacman-contrib, fakeroot, dash, b
 
 # BIG SOFTWARE
 #ger_ins "latex"           # math staff
-#ger_ins "php"             # apache, sass, sql, php, phpmyadmin
 #ger_ins "spotify"         # spotify with useful `sp` script
 
 # WINDOW MANAGERS:
