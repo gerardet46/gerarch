@@ -30,7 +30,7 @@ fi
 cp pkgs/base-min/bashrc "$HOME/.bashrc"
 source "$HOME/.bashrc"
 
-setup_agetty() {
+agetty_autouser() {
     case "$INIT_SYS" in
 	"openrc")
 	    rc_path=/etc/conf.d/agetty.tty1
@@ -53,12 +53,36 @@ setup_agetty() {
     esac
 }
 
+agetty_autologin() {
+    case "$INIT_SYS" in
+	"openrc")
+	    rc_path=/etc/conf.d/agetty.tty1
+	    sudo cp "$rc_path" /etc/conf.d/agetty.tty1_backup
+	    ger_msg="Backup at ${rc_path}_backup"
+	    
+	    sed "s/^agetty\\_options.*$/agetty\\_options\\=\\\"\\-J \\-n \\-a $_USER\\\"/" $rc_path | sudo tee $rc_path
+	    printf "\n#agetty_options=\"-n -o $_USER\"" | sudo tee -a $rc_path
+	    ger_msg "Go to '$rc_path' to setup autologin or login options"
+	    ;;
+	*) # "systemd"
+	    sd_path=/etc/systemd/system/getty.target.wants/getty\@tty1.service
+	    sudo cp "$sd_path" /etc/systemd/system/getty.target.wants/getty\@tty1.service_backup
+	    ger_msg "Backup at ${sd_path}_backup"
 
-read -p "Edit agetty to autofill user or autologin? [Y/n] [S/n]: " yn
+	    sed "s/ExecStart.*$/ExecStart\\=\\-\\/sbin\\/agetty \\-J \\-n \\-a $_USER \%I \\\$TERM/" $sd_path | sudo tee $sd_path
+	    printf "\n#ExecStart=-/sbin/agetty -n -o $_USER \%I \$TERM" | sudo tee -a $sd_path
+	    ger_msg "Go to '$sd_path' to setup autologin or login options"
+	    ;;
+    esac
+}
+
+
+read -p "Setup Login (default U): (a)utologin, default (u)ser, (n)othing: " yn
 
 case $yn in
     n|N) echo "You'll have to prompt user and password" ;;
-    *) setup_agetty ;;
+    a|A) agetty-autologin ;;
+    *) agetty-autouser ;;
 esac
 
 ## DASH
