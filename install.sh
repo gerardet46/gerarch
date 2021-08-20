@@ -36,10 +36,10 @@ ger_msg() {
 }
 
 ger_ins() {
+    cd "$DIR" # return to default dir
     _file="scripts/$1.sh"
     if [ -f "$_file" ]; then
 	echo "#### Installing $1 ####"
-	cd "$DIR" # return to default dir
 	. "$_file"
     else
 	echo "Not found: $1"
