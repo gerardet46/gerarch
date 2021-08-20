@@ -1,7 +1,8 @@
 HISTFILE=~/.histfile
 HISTSIZE=2000
 SAVEHIST=1000
-PLUGINS=("zsh-syntax-highlighting" "zsh-autosuggestions" "zsh-git-prompt")
+#PLUGINS=("zsh-syntax-highlighting" "zsh-autosuggestions")
+#PLUGINS=("zsh-syntax-highlighting" "zsh-autosuggestions" "zsh-git-prompt")
 
 bindkey -v
 KEYTIMEOUT=1
