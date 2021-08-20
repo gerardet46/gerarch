@@ -2,5 +2,5 @@
 
 if ! which emacs; then
     pac_ins emacs
-    cp -rv pkgs/emacs/ "$CONFIG_DIR/.emacs.d/"
+    cp -rv pkgs/emacs/ "$HOME/.emacs.d/"
 fi
