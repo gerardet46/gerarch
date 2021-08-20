@@ -82,8 +82,8 @@ read -p "Setup Login (default U): (a)utologin, default (u)ser, (n)othing: " yn
 
 case $yn in
     n|N) echo "You'll have to prompt user and password" ;;
-    a|A) agetty-autologin ;;
-    *) agetty-autouser ;;
+    a|A) agetty_autologin ;;
+    *) agetty_autouser ;;
 esac
 
 ## DASH
