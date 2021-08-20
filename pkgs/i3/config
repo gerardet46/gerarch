@@ -82,7 +82,7 @@ bindsym $mod+d exec j4-dmenu-desktop
 #bindsym $mod+shift+p exec rofi -theme scripts/material -font "Cantarell 12" -show window
 
 # monitors
-bindsym $mod+p exec "$HOME/scripts/monitors.sh auto"
+bindsym $mod+p exec "$HOME/scripts/monitors.sh"
 
 # ctrl-alt-supr
 bindsym Control+Mod1+Delete exec "$HOME/scripts/power.sh"
