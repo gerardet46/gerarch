@@ -68,5 +68,10 @@ esac
 [ -d "build/" ] || mkdir build
 [ -d "$CONFIG_DIR/" ] || mkdir "$CONFIG_DIR"
 
+echo "### Installation log ###" >> install.log
+
 # install programs in pkgs_selection.sh
 . ./pkgs_selection.sh
+
+cd "$DIR"
+"$EDITOR" install.log
