@@ -35,7 +35,8 @@ in less than 15 min to have a computer ready for daily use.
 <a name="req"></a>
 ## Requirements
 - A minimal arch/artix installation (systemd/artix)
-- A regular user (don't run it with `sudo`)
+- A regular user (don't run it with `sudo`). However, it must have sudo privileges to install from
+pacman and aur
 - `git`, to clone *gerarch*
 - some space in disk (at least 15G for full installation)
 

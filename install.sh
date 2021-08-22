@@ -22,6 +22,11 @@ if ! which "$EDITOR" > /dev/null; then
     exit 1
 fi
 
+if [ $(id -u) -eq 0 ]; then
+    echo "Please don't run it with sudo/root user"
+    exit 1
+fi
+
 # NOTE: now edit pkgs_selection.sh to select the programs you want
 
 ###################
