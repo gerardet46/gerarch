@@ -1,6 +1,7 @@
 # SP - Spotify DBus controller
 ## Installation
 - Copy contents of `sp.sh` to your local computer
+- Give it execute permissions (`chmod +x file`)
 - It's recommended to copy the file into the PATH, such as `/usr/bin/sp`
 - Use it running the command `sp`
 
