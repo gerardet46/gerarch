@@ -1,7 +1,7 @@
 #!/usr/bin/env sh
 
 # base-min
-[ -z "$BASE_MIN" ] && . scripts/base-min.sh
+[ -z "$BASE_MIN" ] && . ger_ins "base-min"
 
 ## XORG, DESKTOP, FEH
 echo "Installing xorg, utilities, feh, backlight, redshift"

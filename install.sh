@@ -42,7 +42,7 @@ ger_msg() {
 
 ger_ins() {
     cd "$DIR" # return to default dir
-    _file="scripts/$1.sh"
+    _file="pkgs/$1/install.sh"
     if [ -f "$_file" ]; then
 	echo "#### Installing $1 ####"
 	. "$_file"
