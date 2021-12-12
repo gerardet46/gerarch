@@ -9,7 +9,7 @@
 ####################################
 # BASE
 ger_ins "base-min"        # aur, arch mirrors, pacman-contrib, fakeroot, dash, bashrc, man, wget, curl
-ger_ins "base-ext"        # (for desktop) base-min + xorg (complete), xdg-utils, backlight, feh (wallpaper), redshift, mouse, fonts, support for emoji
+#ger_ins "base-ext"        # (for desktop) base-min + xorg (complete), xdg-utils, backlight, feh (wallpaper), redshift, mouse, fonts, support for emoji
 
 # COMPOSITORS:
 #ger_ins "xcompmgr"        # a basic compositor
