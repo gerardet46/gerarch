@@ -39,3 +39,4 @@ ger_ins "base-min"        # aur, arch mirrors, pacman-contrib, fakeroot, dash, b
 # WINDOW MANAGERS:
 #ger_ins "i3"              # manual WM
 #ger_ins "dwm"             # dynamic WM
+#ger_ins "dwmblocks"       # some blocks for dwm

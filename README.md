@@ -95,7 +95,8 @@ it may crash your OS
 | latex       | Just the packages to use latex                            |                   |                      |                                              |
 | spotify     | A music player with a useful script                       |                   |                      |                                              |
 | i3          | the manual window manager                                 |                   |                      |                                              |
-| dwm         | the dynamic window manager                                | YES               |                      | gcolors                                             |
+| dwm         | the dynamic window manager                                | YES               |                      | gcolors                                      |
+| dwmblocks   | blocks for dwm bar                                        | YES               |                      | gcolors                                             |
 
 ## Donate
 [Donate me](https://paypal.me/gerardet46)
