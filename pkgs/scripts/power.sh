@@ -1,11 +1,14 @@
-#!/usr/bin/bash
+#!/usr/bin/env sh
 
-e=$(echo -e "Atura\nReinicia\nBloqueja\nSurt" | dmenu -p "Sortida")
+if which dmenukey > /dev/null; then
+    e="$(printf "arbs\nAtura\nReinicia\nBloqueja\nSurt" | dmenukey -p "Sortida")"
+else
+    e="$(printf "Atura\nReinicia\nBloqueja\nSurt" | dmenu -p "Sortida")"
+fi
 
 case "$e" in
     Atura) sudo poweroff ;;
     Reinicia) sudo reboot ;;
-    Bloqueja) dm-tool lock ;;
-    Surt) i3-msg exit ;;
-    *) echo "Opció invàlida" ;;
+    Bloqueja) slock & xset dpms force off ;;
+    Surt) i3-msg exit || killall dwm ;;
 esac

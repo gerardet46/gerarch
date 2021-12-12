@@ -1,0 +1,17 @@
+#!/usr/bin/env sh
+
+toggle_service() {
+    sudo rc-service "$1" status &&
+        sudo rc-service "$1" stop ||
+        sudo rc-service "$1" start
+}
+
+case "$@" in
+    a) pgrep xautolock &&
+        killall xautolock ||
+        xautolock -time 7 -locker slock &
+            ;;
+    b) toggle_service bluetoothd ;;
+    c) toggle_service cupsd ;;
+    s) toggle_service sshd ;;
+esac

@@ -1,0 +1,5 @@
+#!/usr/bin/env sh
+
+case "$1" in
+    w) "$HOME/scripts/wget.sh" ;;
+esac

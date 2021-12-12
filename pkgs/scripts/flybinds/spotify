@@ -1,0 +1,10 @@
+#!/usr/bin/env sh
+
+case "$1" in
+    "␣") sp play ;;
+    "n") sp next ;;
+    "p") sp prev ; sp prev ;;
+    "b") sp prev ;;
+    "o") spotify ;;
+    "x") pkill spotify ;;
+esac

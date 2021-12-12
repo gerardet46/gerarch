@@ -7,7 +7,13 @@ if [ "$1" = "auto" ] ; then
 	exit
 fi
 
-r=$(printf "Portàtil\nHDMI\nDoble\naltres" | dmenu -p "Entrada")
+opt="Portàtil\nHDMI\nDoble\naltres"
+
+if which dmenukey > /dev/null; then
+    r="$(printf "phda\n$opt" | dmenukey -p "Entrada")"
+else
+    r="$(printf "$opt" | dmenu -p "Entrada")"
+fi
 
 case "$r" in
     Portàtil) xrandr --output eDP1 --primary --mode 1920x1080 --pos 0x0 --rotate normal --output DP1 --off --output HDMI1 --off --output HDMI2 --off ;;
@@ -17,3 +23,4 @@ case "$r" in
     *) echo "No s'ha trobat $r (Portàtil|HDMI|Doble|altres)" ;;
 esac
 
+setxkbmap es

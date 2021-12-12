@@ -1,0 +1,8 @@
+#!/usr/bin/env sh
+
+case "$1" in
+    a) sudo poweroff ;;
+    r) sudo reboot ;;
+    b) slock & xset dpms force off ;;
+    s) i3-msg exit || killall dwm ;;
+esac

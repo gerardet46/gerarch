@@ -23,6 +23,7 @@
 \usepackage{xcolor}
 \usepackage{graphicx}
 \usepackage{gensymb}
+\usepackage{enumitem}
 \usepackage[fontsize=11pt]{fontsize}
 \onehalfspacing
 

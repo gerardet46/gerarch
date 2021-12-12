@@ -2,6 +2,7 @@
 (toggle-scroll-bar -1)
 (tool-bar-mode -1)
 (setq inhibit-splash-screen 1)
+(setq backup-directory-alist `(("." . "~/.emacs.d/saves")))
 
 ;; melpa
 (require 'package)
@@ -30,7 +31,7 @@
  '(company-tooltip-width-grow-only t)
  '(custom-enabled-themes '(doom-one))
  '(custom-safe-themes
-   '("301c167ad6964c5522576bdbacf8dd715eddbc084f4debcee9d48ef7c0fd65bb" "aeb72bd8f4d5797807480acc9d40b280281048e2fda3c85f6736232d4c22a6c2" "166140462f0a55b406724851c1dd4b7e1e39182d948d4be3dbd7a3943bfbd9a7" "d164e4cad5fece1b8930b4ff2bff4de2613dea8c752e199ec92839cefbccf630" "d3663732b9efb26e2366511e71b5059d2747ab9c20ccbc7fb9e76a5c90db3fd1" "a2351f5fd8fe502377c5e992b5399aed4c2423495b884ab5e970682da2fbb31a" "01a7064073e119c629dae5b7f425d210147b97d82e492f2c82145b4e1d9fa75e" "171d1ae90e46978eb9c342be6658d937a83aaa45997b1d7af7657546cae5985b" "6e71846d6770578979c93c42c9e5fb75730a8781f7ae7cf721a0e94a52d0dca9" "27830e6948bdcdce0226d496a0ae4474fc94f7c760752de82baaa16c7c71c622" "931576cf8f93fdd98ce3fa1e5b93991bb55d582d856a0ca52795f46efd0d8915" "c542e691cbc440b9c106a594301e5dd7baf9497825e58b1b14ed1cfd7a41772e" "162b0cd4aa03c124efae6edc1cd6d036e85b720512a4a9704980ea0e54cd6caf" "df21d8cfc66d0dbad35a44116851491f00f50421357fc1f04f73d243b0410316" "1b77a33a8f953e8018bcfc4c79aa1f1825251389fefd7588a26cff34a8d4fd98" "23c37a5ad52a0676f1eff5391486953698e5b535616cfe9acab005a3033911d4" "c0c1891f936e8ec579558a3162e2eef387e781cd65d40af218e9897af193a8c3" "5b04ed3935ff56e4f8b3c49b2e2d003865170c8f7feebce510c6eb363ac24f12" "2586be8af87fb0b982006df5ee6045bae172391240d153b2d5a077e6c4b0735b" "fd638bb24c8d99ad6d822a6ac260bc98cdb6be54c4f2522affc05f0d45d7c3ce" "e73a648635b171521927bdb4c1847590efc7c16739b2d178646f1157468c4845" "7c21eb03ffe441af30fe825eabb240b381d554f695f7c26cc17bf0ac56fac454" "b5fff23b86b3fd2dd2cc86aa3b27ee91513adaefeaa75adc8af35a45ffb6c499" "71e5acf6053215f553036482f3340a5445aee364fb2e292c70d9175fb0cc8af7" "2c49d6ac8c0bf19648c9d2eabec9b246d46cb94d83713eaae4f26b49a8183fc4" "e6ff132edb1bfa0645e2ba032c44ce94a3bd3c15e3929cdf6c049802cf059a2a" "ee9a30ae06edfd3cf8929a29da3c125af14301ea1d72a700290b5c15f999d17d" "12bc0a84a45a6149bc4eaa5fb59beaefd3137d435a7bfa61b56966bd755e4beb" "ab1afc121e776103057f867899b98d6a9eca3a134349a5a1792014b35f55a000" "d5ad56308e3306ee759086d418975e2cef214bc03745468f0908f995f0a02b45" "ffa0e7d9b94b26cb3e7ecb7b6ee7623162db63d2d83f3b83da2f865c4348e372" "b05072434a37de0d2c6645340fc2b94bdc1cd8d35cde92cf32a702de670884a6" "77113617a0642d74767295c4408e17da3bfd9aa80aaa2b4eeb34680f6172d71a" default))
+   '("fce3524887a0994f8b9b047aef9cc4cc017c5a93a5fb1f84d300391fba313743" "301c167ad6964c5522576bdbacf8dd715eddbc084f4debcee9d48ef7c0fd65bb" "aeb72bd8f4d5797807480acc9d40b280281048e2fda3c85f6736232d4c22a6c2" "166140462f0a55b406724851c1dd4b7e1e39182d948d4be3dbd7a3943bfbd9a7" "d164e4cad5fece1b8930b4ff2bff4de2613dea8c752e199ec92839cefbccf630" "d3663732b9efb26e2366511e71b5059d2747ab9c20ccbc7fb9e76a5c90db3fd1" "a2351f5fd8fe502377c5e992b5399aed4c2423495b884ab5e970682da2fbb31a" "01a7064073e119c629dae5b7f425d210147b97d82e492f2c82145b4e1d9fa75e" "171d1ae90e46978eb9c342be6658d937a83aaa45997b1d7af7657546cae5985b" "6e71846d6770578979c93c42c9e5fb75730a8781f7ae7cf721a0e94a52d0dca9" "27830e6948bdcdce0226d496a0ae4474fc94f7c760752de82baaa16c7c71c622" "931576cf8f93fdd98ce3fa1e5b93991bb55d582d856a0ca52795f46efd0d8915" "c542e691cbc440b9c106a594301e5dd7baf9497825e58b1b14ed1cfd7a41772e" "162b0cd4aa03c124efae6edc1cd6d036e85b720512a4a9704980ea0e54cd6caf" "df21d8cfc66d0dbad35a44116851491f00f50421357fc1f04f73d243b0410316" "1b77a33a8f953e8018bcfc4c79aa1f1825251389fefd7588a26cff34a8d4fd98" "23c37a5ad52a0676f1eff5391486953698e5b535616cfe9acab005a3033911d4" "c0c1891f936e8ec579558a3162e2eef387e781cd65d40af218e9897af193a8c3" "5b04ed3935ff56e4f8b3c49b2e2d003865170c8f7feebce510c6eb363ac24f12" "2586be8af87fb0b982006df5ee6045bae172391240d153b2d5a077e6c4b0735b" "fd638bb24c8d99ad6d822a6ac260bc98cdb6be54c4f2522affc05f0d45d7c3ce" "e73a648635b171521927bdb4c1847590efc7c16739b2d178646f1157468c4845" "7c21eb03ffe441af30fe825eabb240b381d554f695f7c26cc17bf0ac56fac454" "b5fff23b86b3fd2dd2cc86aa3b27ee91513adaefeaa75adc8af35a45ffb6c499" "71e5acf6053215f553036482f3340a5445aee364fb2e292c70d9175fb0cc8af7" "2c49d6ac8c0bf19648c9d2eabec9b246d46cb94d83713eaae4f26b49a8183fc4" "e6ff132edb1bfa0645e2ba032c44ce94a3bd3c15e3929cdf6c049802cf059a2a" "ee9a30ae06edfd3cf8929a29da3c125af14301ea1d72a700290b5c15f999d17d" "12bc0a84a45a6149bc4eaa5fb59beaefd3137d435a7bfa61b56966bd755e4beb" "ab1afc121e776103057f867899b98d6a9eca3a134349a5a1792014b35f55a000" "d5ad56308e3306ee759086d418975e2cef214bc03745468f0908f995f0a02b45" "ffa0e7d9b94b26cb3e7ecb7b6ee7623162db63d2d83f3b83da2f865c4348e372" "b05072434a37de0d2c6645340fc2b94bdc1cd8d35cde92cf32a702de670884a6" "77113617a0642d74767295c4408e17da3bfd9aa80aaa2b4eeb34680f6172d71a" default))
  '(electric-pair-mode t)
  '(jdee-db-active-breakpoint-face-colors (cons "#1B2229" "#51afef"))
  '(jdee-db-requested-breakpoint-face-colors (cons "#1B2229" "#98be65"))
@@ -38,40 +39,40 @@
  '(key-chord-mode t)
  '(objed-cursor-color "#ff6c6b")
  '(package-selected-packages
-   '(emojify markdown-mode pdf-tools company-auctex auctex yasnippet-snippets alert company-emoji visual-fill-column dashboard company-c-headers multiple-cursors which-key evil-anzu org-bullets atom-one-dark-theme magit scss-mode js2-mode all-the-icons-ivy-rich ivy-rich counsel ivy key-chord treemacs-projectile treemacs company-phpactor phpactor flycheck-phpstan flycheck company-php use-package php-mode emmet-mode yasnippet company-web web-mode hl-todo projectile-codesearch projectile doom-modeline general doom-themes evil))
+   '(emojify markdown-mode pdf-tools company-auctex auctex yasnippet-snippets telega alert company-emoji visual-fill-column dashboard company-c-headers multiple-cursors which-key evil-anzu org-bullets atom-one-dark-theme magit scss-mode js2-mode all-the-icons-ivy-rich ivy-rich counsel ivy key-chord treemacs-projectile treemacs company-phpactor phpactor flycheck-phpstan flycheck company-php use-package php-mode emmet-mode yasnippet company-web web-mode hl-todo projectile-codesearch projectile doom-modeline general doom-themes evil))
  '(pdf-view-midnight-colors (cons "#bbc2cf" "#282c34"))
  '(rustic-ansi-faces
    ["#282c34" "#ff6c6b" "#98be65" "#ECBE7B" "#51afef" "#c678dd" "#46D9FF" "#bbc2cf"])
  '(tetris-x-colors
    [[229 192 123]
-	[97 175 239]
-	[209 154 102]
-	[224 108 117]
-	[152 195 121]
-	[198 120 221]
-	[86 182 194]])
+    [97 175 239]
+    [209 154 102]
+    [224 108 117]
+    [152 195 121]
+    [198 120 221]
+    [86 182 194]])
  '(treemacs-filewatch-mode t)
  '(vc-annotate-background "#282c34")
  '(vc-annotate-color-map
    (list
-	(cons 20 "#98be65")
-	(cons 40 "#b4be6c")
-	(cons 60 "#d0be73")
-	(cons 80 "#ECBE7B")
-	(cons 100 "#e6ab6a")
-	(cons 120 "#e09859")
-	(cons 140 "#da8548")
-	(cons 160 "#d38079")
-	(cons 180 "#cc7cab")
-	(cons 200 "#c678dd")
-	(cons 220 "#d974b7")
-	(cons 240 "#ec7091")
-	(cons 260 "#ff6c6b")
-	(cons 280 "#d7696a")
-	(cons 300 "#af686a")
-	(cons 320 "#87666a")
-	(cons 340 "#fB6268")
-	(cons 360 "#fB6268")))
+    (cons 20 "#98be65")
+    (cons 40 "#b4be6c")
+    (cons 60 "#d0be73")
+    (cons 80 "#ECBE7B")
+    (cons 100 "#e6ab6a")
+    (cons 120 "#e09859")
+    (cons 140 "#da8548")
+    (cons 160 "#d38079")
+    (cons 180 "#cc7cab")
+    (cons 200 "#c678dd")
+    (cons 220 "#d974b7")
+    (cons 240 "#ec7091")
+    (cons 260 "#ff6c6b")
+    (cons 280 "#d7696a")
+    (cons 300 "#af686a")
+    (cons 320 "#87666a")
+    (cons 340 "#fB6268")
+    (cons 360 "#fB6268")))
  '(vc-annotate-very-old-color nil))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
@@ -452,6 +453,8 @@ Version 2017-03-12"
 (add-hook 'web-mode-hook 'xah-syntax-color-hex)
 (add-hook 'html-mode-hook 'xah-syntax-color-hex)
 (add-hook 'lisp-mode-hook 'xah-syntax-color-hex)
+(add-hook 'c-mode-hook 'xah-syntax-color-hex)
+(add-hook 'c++-mode-hook 'xah-syntax-color-hex)
 (add-hook 'after-init-hook 'global-company-mode)
 
 (global-flycheck-mode)
@@ -660,6 +663,9 @@ Version 2017-03-12"
                         (agenda . 5)))
 
 
+;; telega
+;;(global-emojify-mode)
+
 ;;(global-set-key (kbd "C-c e") 'emojify-insert-emoji)
 
 (defun --set-emoji-font (frame)  
@@ -668,12 +674,33 @@ Version 2017-03-12"
       ;; For NS/Cocoa
       (set-fontset-font t 'symbol (font-spec :family "Apple Color Emoji") frame 'prepend)
     ;; For Linux
-    (set-fontset-font t 'symbol (font-spec :family "Noto Color Emoji") frame 'prepend)))
+    (set-fontset-font t 'symbol (font-spec :family "Symbola") frame 'prepend)))
 
+;; For when Emacs is started in GUI mode:
 (--set-emoji-font nil)
+;; Hook for when a frame is created with emacsclient
+;; see https://www.gnu.org/software/emacs/manual/html_node/elisp/Creating-Frames.html
 (add-hook 'after-make-frame-functions '--set-emoji-font)
 
+(setq telega-emoji-company-backend 'telega-company-emoji)
 (setq emojify-company-tooltips-p t)
+
+;;(require 'telega-dashboard)
+;;(add-to-list 'dashboard-items '(telega-chats . 5))
+;;(telega-alert-mode +1)
+
+(defun my-telega-chat-mode ()
+  (set (make-local-variable 'company-backends)
+       (append (list telega-emoji-company-backend
+                   'telega-company-username
+                   'telega-company-hashtag)
+             (when (telega-chat-bot-p telega-chatbuf--chat)
+               '(telega-company-botcmd))))
+  (company-mode 1)
+  (telega-notifications-mode +1))
+
+(add-hook 'telega-chat-mode-hook 'my-telega-chat-mode)
+
 
 ;; latex
 (require 'tex)
@@ -694,7 +721,7 @@ Version 2017-03-12"
 (add-to-list 'TeX-view-program-list
              '("Zathura"
                ("zathura "
-                (mode-io-correlate " --synctex-forward %n:0:%b -x \"emacsclient +%{line} %{input}\" ")
+                (mode-io-correlate " --synctex-forward \"%n:0:%b\" -x \"emacsclient +%{line} %{input}\" ")
                 " %o")
                "zathura"))
 (add-to-list 'TeX-view-program-selection

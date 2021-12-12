@@ -1,16 +1,26 @@
-HISTFILE=~/.histfile
-HISTSIZE=2000
-SAVEHIST=1000
-PLUGINS=("zsh-syntax-highlighting" "zsh-autosuggestions")
-#PLUGINS=("zsh-syntax-highlighting" "zsh-autosuggestions" "zsh-git-prompt")
+HISTFILE=~/.zsh_history
+HISTSIZE=10000
+SAVEHIST=5000
 
 bindkey -v
 KEYTIMEOUT=1
 zstyle :compinstall filename '$HOME/.zshrc'
 
-# alias i editor
-AUR_HELPER=""
-EDITOR="nvim"
+# export
+export EDITOR="nvim"
+export BROWSER="brave"
+export _JAVA_OPTIONS='-Dawt.useSystemAAFontSettings=on -Dswing.aatext=true'
+
+# manual
+export LESS_TERMCAP_mb=$'\e[1;35m'
+export LESS_TERMCAP_md=$'\e[1;35m'
+export LESS_TERMCAP_me=$'\e[0m'
+export LESS_TERMCAP_se=$'\e[0m'
+export LESS_TERMCAP_so=$'\e[01;32m'
+export LESS_TERMCAP_ue=$'\e[0m'
+export LESS_TERMCAP_us=$'\e[1;4;34m'
+
+# alias
 alias ..='cd ..'
 alias ...='cd ../..'
 alias ls='ls --color=auto'
@@ -23,11 +33,6 @@ alias poweroff='sudo poweroff'
 alias reboot='sudo reboot'
 alias apache='sudo rc-service httpd start && sudo mysqld --user=root &> /dev/null &'
 alias apache-quit='sudo pkill mysqld && sudo rc-service httpd stop'
-
-# startx
-if [ $("tty") = "/dev/tty1" ] ; then
-    pgrep i3 || pgrep dwm || pgrep xmonad || startx ~/.xinitrc
-fi
 
 # nnn
 [ -f "$HOME/.config/nnn/config" ] && source "$HOME/.config/nnn/config"
@@ -46,39 +51,43 @@ prompt_mytheme_setup() {
 prompt_themes+=( mytheme )
 prompt mytheme
 
+if [ $("tty") = "/dev/tty1" ] ; then
+    pgrep dwm || pgrep i3 || startx ~/.xinitrc
+fi
+
 # plugins
-for x in $PLUGINS; do
-    if [ "$x" = "zsh-git-prompt" ]; then
-	# instal·lar si no ho està
-	ruta="$HOME/.config/zsh/zsh-git-prompt"
-	GIT_PROMPT_EXECUTABLE="python" # aka haskell
-
-	[ -d "$ruta" ] || git clone "https://github.com/olivierverdier/zsh-git-prompt" "$ruta"
-	if ! [ "$GIT_PROMPT_EXECUTABLE" != "haskell" -o -f "/usr/local/bin/stack" ]; then
-	    sudo pacman --noconfirm -S stack
-	    cd "$ruta"
-	    stack setup
-	    stack build
-	    stack install
-	fi
-
-	# carregam
-	source ~/.config/zsh/zsh-git-prompt/zshrc.sh
-	RPROMPT='$(git_super_status)'
-    else
-	# instal·lam si no ho està
-	[ -z "$(pacman -Q | grep "$x")" ] && $AUR_HELPER --noconfirm -S "$x"
-	# carregam
-	source "/usr/share/zsh/plugins/$x/$x.zsh" 2> /dev/null
+noms=("zsh-syntax-highlighting" "zsh-autosuggestions")
+for x in $noms; do
+    # instal·lam si no ho està
+    if [ -z "$(pacman -Q | grep "$x")" ]; then
+        trizen -S "$x"  # trizen es un AUR helper
     fi
+    # carregam
+    source "/usr/share/zsh/plugins/$x/$x.zsh" 2> /dev/null
 done
 
-# highlighter
-if [[ " ${PLUGINS[*]} " == *" zsh-syntax-highlighting "* ]]; then
-    ZSH_HIGHLIGHT_STYLES[single-hyphen-option]="fg=blue"
-    ZSH_HIGHLIGHT_STYLES[double-hyphen-option]="fg=blue"
-    ZSH_HIGHLIGHT_STYLES[arg0]="none"
+# git prompt
+# instal·lam si fa falta
+ruta="$HOME/.config/zsh/zsh-git-prompt"
+GIT_PROMPT_EXECUTABLE="python" # aka haskell
+
+[ -d "$ruta" ] || git clone "https://github.com/olivierverdier/zsh-git-prompt" "$ruta"
+if ! [ "$GIT_PROMPT_EXECUTABLE" != "haskell" -o -f "/usr/local/bin/stack" ]; then
+    sudo pacman -S stack
+    cd "$ruta"
+    stack setup
+    stack build
+    stack install
 fi
+
+# carregam
+#source ~/.config/zsh/zsh-git-prompt/zshrc.sh
+#RPROMPT='$(git_super_status)'
+
+# highlighter
+ZSH_HIGHLIGHT_STYLES[single-hyphen-option]="fg=blue"
+ZSH_HIGHLIGHT_STYLES[double-hyphen-option]="fg=blue"
+ZSH_HIGHLIGHT_STYLES[arg0]="none"
 
 # tipus de cursor per VI.
 # 2-6 perquè no parpellegi

@@ -30,6 +30,7 @@ endif
 call plug#begin(system('echo -n "${XDG_CONFIG_HOME:-$HOME/.config}/nvim/plugged"'))
 Plug 'mhartington/oceanic-next'
 Plug 'morhetz/gruvbox'
+Plug 'arcticicestudio/nord-vim'
 Plug 'cormacrelf/vim-colors-github'
 Plug 'ncm2/ncm2'
 Plug 'roxma/nvim-yarp'
@@ -49,5 +50,5 @@ let g:user_emmet_leader_key='<C-Z>'
 
 set completeopt=noinsert,menuone,noselect
 
-colorscheme gruvbox
+colorscheme gruvbox 
 hi Normal guibg=NONE ctermbg=NONE
