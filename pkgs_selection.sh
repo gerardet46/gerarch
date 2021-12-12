@@ -16,6 +16,8 @@ ger_ins "base-min"        # aur, arch mirrors, pacman-contrib, fakeroot, dash, b
 #ger_ins "picom"           # a bloated compositor
 
 # UTILITIES
+#ger_ins "flybinds"        # better keyboard shorcuts
+#ger_ins "my-flybinds"     # same as above with my config
 #ger_ins "zsh"             # the best POSIX-compliant shell
 #ger_ins "st"              # (SR) the best terminal
 #ger_ins "dmenu"           # (SR) the menu
@@ -35,3 +37,4 @@ ger_ins "base-min"        # aur, arch mirrors, pacman-contrib, fakeroot, dash, b
 
 # WINDOW MANAGERS:
 #ger_ins "i3"              # manual WM
+#ger_ins "dwm"             # dynamic WM

@@ -70,27 +70,30 @@ it may crash your OS
 <a name="pkg"></a>
 ## Available packages
 
-| Name     | Description                                               | Install once | Compiled from src | User interaction     | Depends (will be installed if not satisfied) |
-|----------|-----------------------------------------------------------|--------------|-------------------|----------------------|----------------------------------------------|
-| base-min | dash, aur, bashrc, wget, man                              | YES          |                   | YES (agetty)         |                                              |
-| base-ext | xorg, redshift, xinitrc, feh, backlight, xdg-utils, fonts | YES          |                   | YES (redshift)       | base-min                                     |
-| xcompmgr | the compositor                                            |              |                   |                      |                                              |
-| picom    | the bloated compositor                                    |              |                   |                      |                                              |
-| zsh      | the interactive shell                                     |              |                   | YES (set def. shell) |                                              |
-| st       | the sexy terminal                                         |              | YES               |                      |                                              |
-| dmenu    | d menu                                                    |              | YES               |                      |                                              |
-| scripts  | dmenu scripts and useful staff                            |              |                   |                      | dmenu                                        |
-| dunst    | notifications                                             |              |                   |                      |                                              |
-| slock    | the sexy locker                                           |              | YES               |                      |                                              |
-| tabbed   | some tabs (for nnn)                                       |              | YES               |                      |                                              |
-| nnn      | the file manager                                          |              | YES               |                      | tabbed, AUR: pmount, dragon-drag-and-drop    |
-| emacs    | the best OS (with org, magit, latex, php, C/C++, python)  |              |                   |                      |                                              |
-| nvim     | the best text editor                                      |              |                   |                      |                                              |
-| zathura  | vim pdf viewer                                            |              |                   |                      |                                              |
-| sxiv     | vim image viewer                                          |              | YES               |                      |                                              |
-| latex    | Just the packages to use latex                            |              |                   |                      |                                              |
-| spotify  | A music player with a useful script                       |              |                   |                      |                                              |
-| i3       | the manual window manager                                 |              |                   |                      |                                              |
+| Name        | Description                                               | Compiled from src | User interaction     | Depends (will be installed if not satisfied) |
+|-------------|-----------------------------------------------------------|-------------------|----------------------|----------------------------------------------|
+| base-min    | dash, aur, bashrc, wget, man                              |                   | YES (agetty)         |                                              |
+| base-ext    | xorg, redshift, xinitrc, feh, backlight, xdg-utils, fonts |                   | YES (redshift)       | base-min                                     |
+| xcompmgr    | the compositor                                            |                   |                      |                                              |
+| zsh         | the interactive shell                                     |                   | YES (set def. shell) |                                              |
+| picom       | the bloated compositor                                    |                   |                      |                                              |
+| flybinds    | faster keyboard shortcuts                                 | YES               |                      |                                              |
+| my-flybinds | same with my config                                       | YES               |                      |                                              |
+| st          | the sexy terminal                                         | YES               |                      |                                              |
+| dmenu       | d menu                                                    | YES               |                      |                                              |
+| scripts     | dmenu scripts and useful staff                            |                   |                      | dmenu                                        |
+| dunst       | notifications                                             |                   |                      |                                              |
+| slock       | the sexy locker                                           | YES               |                      |                                              |
+| tabbed      | some tabs (for nnn)                                       | YES               |                      |                                              |
+| nnn         | the file manager                                          | YES               |                      | tabbed, AUR: pmount, dragon-drag-and-drop    |
+| emacs       | the best OS (with org, magit, latex, php, C/C++, python)  |                   |                      |                                              |
+| nvim        | the best text editor                                      |                   |                      |                                              |
+| zathura     | vim pdf viewer                                            |                   |                      |                                              |
+| sxiv        | vim image viewer                                          | YES               |                      |                                              |
+| latex       | Just the packages to use latex                            |                   |                      |                                              |
+| spotify     | A music player with a useful script                       |                   |                      |                                              |
+| i3          | the manual window manager                                 |                   |                      |                                              |
+| dwm         | the dynamic window manager                                | YES               |                      |                                              |
 
 ## Donate
 [Donate me](https://paypal.me/gerardet46)
