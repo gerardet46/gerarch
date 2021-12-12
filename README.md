@@ -38,6 +38,7 @@ in less than 15 min to have a computer ready for daily use.
 - A regular user (don't run it with `sudo`). However, it must have sudo privileges to install from
 pacman and aur
 - `git`, to clone *gerarch*
+- a text editor, such as `vi` or `nano`
 - some space in disk (at least 15G for full installation)
 
 
