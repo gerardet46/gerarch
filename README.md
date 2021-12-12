@@ -74,14 +74,15 @@ it may crash your OS
 |-------------|-----------------------------------------------------------|-------------------|----------------------|----------------------------------------------|
 | base-min    | dash, aur, bashrc, wget, man                              |                   | YES (agetty)         |                                              |
 | base-ext    | xorg, redshift, xinitrc, feh, backlight, xdg-utils, fonts |                   | YES (redshift)       | base-min                                     |
+| gcolors     | color theme library for C and shell                       |                   |                      |                                              |
 | xcompmgr    | the compositor                                            |                   |                      |                                              |
 | zsh         | the interactive shell                                     |                   | YES (set def. shell) |                                              |
 | picom       | the bloated compositor                                    |                   |                      |                                              |
 | flybinds    | faster keyboard shortcuts                                 | YES               |                      |                                              |
-| my-flybinds | same with my config                                       | YES               |                      |                                              |
-| st          | the sexy terminal                                         | YES               |                      |                                              |
-| dmenu       | d menu                                                    | YES               |                      |                                              |
-| scripts     | dmenu scripts and useful staff                            |                   |                      | dmenu                                        |
+| my-flybinds | same with my config                                       | YES               |                      | gcolors                                      |
+| st          | the sexy terminal                                         | YES               |                      | gcolors                                      |
+| dmenu       | d menu                                                    | YES               |                      | gcolors                                      |
+| scripts     | dmenu scripts and useful staff                            |                   |                      | dmenu, gcolors                               |
 | dunst       | notifications                                             |                   |                      |                                              |
 | slock       | the sexy locker                                           | YES               |                      |                                              |
 | tabbed      | some tabs (for nnn)                                       | YES               |                      |                                              |
@@ -89,11 +90,11 @@ it may crash your OS
 | emacs       | the best OS (with org, magit, latex, php, C/C++, python)  |                   |                      |                                              |
 | nvim        | the best text editor                                      |                   |                      |                                              |
 | zathura     | vim pdf viewer                                            |                   |                      |                                              |
-| sxiv        | vim image viewer                                          | YES               |                      |                                              |
+| sxiv        | vim image viewer                                          | YES               |                      | gcolors                                      |
 | latex       | Just the packages to use latex                            |                   |                      |                                              |
 | spotify     | A music player with a useful script                       |                   |                      |                                              |
 | i3          | the manual window manager                                 |                   |                      |                                              |
-| dwm         | the dynamic window manager                                | YES               |                      |                                              |
+| dwm         | the dynamic window manager                                | YES               |                      | gcolors                                             |
 
 ## Donate
 [Donate me](https://paypal.me/gerardet46)

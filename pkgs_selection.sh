@@ -9,13 +9,14 @@
 ####################################
 # BASE
 ger_ins "base-min"        # aur, arch mirrors, pacman-contrib, fakeroot, dash, bashrc, man, wget, curl
-#ger_ins "base-ext"        # (for desktop) base-min + xorg (complete), xdg-utils, backlight, feh (wallpaper), redshift, mouse, fonts, support for emoji
+ger_ins "base-ext"        # (for desktop) base-min + xorg (complete), xdg-utils, backlight, feh (wallpaper), redshift, mouse, fonts, support for emoji
 
 # COMPOSITORS:
 #ger_ins "xcompmgr"        # a basic compositor
 #ger_ins "picom"           # a bloated compositor
 
 # UTILITIES
+#ger_ins "gcolors"         # better color themes (needed for must programs)
 #ger_ins "flybinds"        # better keyboard shorcuts
 #ger_ins "my-flybinds"     # same as above with my config
 #ger_ins "zsh"             # the best POSIX-compliant shell
