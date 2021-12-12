@@ -14,7 +14,7 @@ chmod +x "$HOME/.xinitrc" "$CONFIG_DIR/xstart"
 
 # backlight
 if [ "$INIT_SYS" = "openrc" ]; then
-    pac_ins backlight-openrc
+    pac_ins backlight-openrc light
 
     # make it POSIX-compliant
     script_path=/etc/init.d/backlight

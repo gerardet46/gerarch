@@ -15,6 +15,9 @@ ger_ins "base-min"        # aur, arch mirrors, pacman-contrib, fakeroot, dash, b
 #ger_ins "xcompmgr"        # a basic compositor
 #ger_ins "picom"           # a bloated compositor
 
+# MISC (PLEASE VISIT pkgs/misc/install.sh to select programs)
+#ger_ins "misc"            # misc little programs
+
 # UTILITIES
 #ger_ins "gcolors"         # better color themes (needed for must programs)
 #ger_ins "flybinds"        # better keyboard shorcuts

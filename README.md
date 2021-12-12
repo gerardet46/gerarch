@@ -53,12 +53,13 @@ cd gerarch
 ```
 2. Change some configurations in `install.sh`, such us *AUR_HELPER* or *EDITOR*
 3. Select the packages you want to install and rice in `pkgs_selection.sh` by un-commenting lines
-4. Execute installer
+4. If you want to install `misc` package, edit `pkgs/misc/install.sh` to comment the packages you don't want
+5. Execute installer
 ```bash
 ./install.sh
 ```
-5. Check if configurations (variables) are correct and press *Y*. If not, edit some configurations in `install.sh`
-6. Check whenever some package needs your interaction (see [packages](#pkg))
+6. Check if configurations (variables) are correct and press *Y*. If not, edit some configurations in `install.sh`
+7. Check whenever some package needs your interaction (see [packages](#pkg))
 8. Reboot and enjoy!
 
 <a name="recommendations"></a>
@@ -75,6 +76,7 @@ it may crash your OS
 |-------------|-----------------------------------------------------------|-------------------|----------------------|----------------------------------------------|
 | base-min    | dash, aur, bashrc, wget, man                              |                   | YES (agetty)         |                                              |
 | base-ext    | xorg, redshift, xinitrc, feh, backlight, xdg-utils, fonts |                   | YES (redshift)       | base-min                                     |
+| misc        | mpv, calendar, bluetooth, ... (misc)                      |                   |                      |                                              |
 | gcolors     | color theme library for C and shell                       |                   |                      |                                              |
 | xcompmgr    | the compositor                                            |                   |                      |                                              |
 | zsh         | the interactive shell                                     |                   | YES (set def. shell) |                                              |
@@ -96,7 +98,7 @@ it may crash your OS
 | spotify     | A music player with a useful script                       |                   |                      |                                              |
 | i3          | the manual window manager                                 |                   |                      |                                              |
 | dwm         | the dynamic window manager                                | YES               |                      | gcolors                                      |
-| dwmblocks   | blocks for dwm bar                                        | YES               |                      | gcolors                                             |
+| dwmblocks   | blocks for dwm bar                                        | YES               |                      | gcolors                                      |
 
 ## Donate
 [Donate me](https://paypal.me/gerardet46)
