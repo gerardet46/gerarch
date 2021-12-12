@@ -8,5 +8,5 @@ if ! which dwm; then
     cd build/dwm
     sudo make install clean
 
-    printf "\nexec i3" >> "$HOME/.xinitrc"
+    printf "\nexec dwm" >> "$HOME/.xinitrc"
 fi
